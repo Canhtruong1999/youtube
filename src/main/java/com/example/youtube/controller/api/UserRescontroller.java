@@ -1,7 +1,7 @@
 package com.example.youtube.controller.api;
 
-import com.example.youtube.Service.user.AuthService;
-import com.example.youtube.Service.user.request.RegisterSaveRequest;
+import com.example.youtube.service.AuthService;
+import com.example.youtube.service.request.RegisterSaveRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
