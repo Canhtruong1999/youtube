@@ -36,8 +36,7 @@ public class User {
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Comment> comments;
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<UserSub> userSubs;
+
+
 
 }

@@ -31,14 +31,14 @@ public class AuthService implements UserDetailsService {
     }
     public void register(RegisterSaveRequest request){
         var user = AppUtils.mapper.map(request, User.class);
-        user.setRole(Role.ROLE_USER.ROLE_USER);
+        user.setRole(Role.ROLE_USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
     public boolean checkUsernameOrPhoneNumberOrEmail(RegisterSaveRequest request, BindingResult result){
         boolean check = false;
-        if(userRepository.existsByUsernameIgnoreCase(request.getUserName())){
+        if(userRepository.existsByUsernameIgnoreCase(request.getUsername())){
             result.reject("username", null,
                     "There is already an account registered with the same username");
             check = true;
