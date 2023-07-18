@@ -29,7 +29,7 @@ public class SpringSecurity {
                         authorize.requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/login").permitAll()
                                 .requestMatchers("/home").permitAll()
-                                .requestMatchers("/css/**","/js/**").permitAll()
+                                .requestMatchers("/css/**","/js/**","/video/**","/images/**").permitAll()
                 ).formLogin(
                         form -> form
                                 .loginPage("/login")
