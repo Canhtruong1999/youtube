@@ -1,6 +1,7 @@
 package com.example.youtube.controller.thymleaf;
 
-import com.example.youtube.service.AuthService;
+
+import com.example.youtube.Service.AuthService;
 import com.example.youtube.service.request.RegisterSaveRequest;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;

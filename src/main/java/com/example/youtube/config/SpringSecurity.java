@@ -37,7 +37,6 @@ public class SpringSecurity {
         configuration.setExposedHeaders(Arrays.asList("*"));
         final var source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-
         return source;
     }
     @Bean
@@ -49,22 +48,14 @@ public class SpringSecurity {
                                 .requestMatchers("/login").permitAll()
                                 .requestMatchers("/api/**").permitAll()
                                 .requestMatchers("/home").permitAll()
-<<<<<<< HEAD
+
                                 .requestMatchers("/channelvideo").permitAll()
                                 .requestMatchers("/api/videos/**").permitAll()
                                 .requestMatchers("/create").permitAll()
                                 .requestMatchers("/css/**","/js/**","/video/**","/images/**").permitAll()
                                 .anyRequest().permitAll());
                         http.formLogin(
-=======
-//                                .requestMatchers("*.js","*.css").permitAll()
-                                .requestMatchers("/css/**","/js/**","/video/**","/images/**").permitAll()
-                                .requestMatchers("/api/**").permitAll()
-                                .requestMatchers("/singlePages/**").permitAll()
 
-
-                ).formLogin(
->>>>>>> e6de110a987a48446d88fde9696120072013d9bb
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")

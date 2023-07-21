@@ -1,15 +1,13 @@
-package com.example.youtube.service;
+package com.example.youtube.Service;
 
 import com.example.youtube.enums.Role;
 import com.example.youtube.model.User;
 import com.example.youtube.repository.UserRepository;
 import com.example.youtube.service.request.RegisterSaveRequest;
 import com.example.youtube.utils.AppUtils;
-<<<<<<< HEAD:src/main/java/com/example/youtube/Service/AuthService.java
+
 import jakarta.validation.Valid;
-=======
 import org.springframework.security.core.Authentication;
->>>>>>> e6de110a987a48446d88fde9696120072013d9bb:src/main/java/com/example/youtube/Service/user/AuthService.java
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;

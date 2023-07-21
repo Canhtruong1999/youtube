@@ -1,9 +1,7 @@
 package com.example.youtube.controller.api;
-
+import com.example.youtube.Service.AuthService;
 import com.example.youtube.Service.like.LikeService;
-import com.example.youtube.Service.user.AuthService;
 import com.example.youtube.Service.video.VideoService;
-import com.example.youtube.enums.LikeStatus;
 import com.example.youtube.model.Likes;
 import com.example.youtube.model.User;
 import com.example.youtube.model.Video;
@@ -11,8 +9,6 @@ import com.example.youtube.repository.VideoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/likes")

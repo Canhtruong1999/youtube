@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
     @Service
-    public class VideoServiceImpl implements VideoService {
+    public class VideoServiceImpl implements VideosService {
         private final VideoRepository videoRepository;
         private final TagRepository tagRepository;
         private final TagDetailRepository tagDetailRepository;
