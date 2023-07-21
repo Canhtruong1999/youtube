@@ -23,6 +23,7 @@ public class Video {
     private LocalDate dateSubmit;
     private String video;
     private String img;
+    private String Description;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

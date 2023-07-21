@@ -28,6 +28,7 @@ public class SpringSecurity {
                 .authorizeHttpRequests((authorize) ->
                         authorize.requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/login").permitAll()
+                                .requestMatchers("/api/**").permitAll()
                                 .requestMatchers("/home").permitAll()
 //                                .requestMatchers("*.js","*.css").permitAll()
                                 .requestMatchers("/css/**","/js/**","/video/**","/images/**").permitAll()
