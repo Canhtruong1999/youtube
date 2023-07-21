@@ -22,4 +22,10 @@ public class Likes {
     @ManyToOne
     @JoinColumn(name = "video_id")
     private Video video;
+
+    public Likes(LikeStatus likeStatus, User user, Video video) {
+        this.likeStatus = likeStatus;
+        this.user = user;
+        this.video = video;
+    }
 }

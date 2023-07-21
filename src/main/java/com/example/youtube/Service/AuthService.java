@@ -5,14 +5,20 @@ import com.example.youtube.model.User;
 import com.example.youtube.repository.UserRepository;
 import com.example.youtube.service.request.RegisterSaveRequest;
 import com.example.youtube.utils.AppUtils;
+<<<<<<< HEAD:src/main/java/com/example/youtube/Service/AuthService.java
 import jakarta.validation.Valid;
+=======
+import org.springframework.security.core.Authentication;
+>>>>>>> e6de110a987a48446d88fde9696120072013d9bb:src/main/java/com/example/youtube/Service/user/AuthService.java
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 
@@ -64,5 +70,18 @@ public class AuthService implements UserDetailsService {
         role.add(new SimpleGrantedAuthority(user.getRole().toString()));
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), role);
+    }
+    @ResponseBody
+    public String getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            String username = authentication.getName();
+            return  username;
+        } else {
+            return "Not logged in";
+        }
+    }
+    public User findByName (String name){
+        return userRepository.findByUsername(name);
     }
 }

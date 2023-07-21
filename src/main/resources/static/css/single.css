@@ -1,5 +1,5 @@
 .left {
-  width: 1000px;
+  /*width: 75%;*/
   color: #fff;
   margin-right: 30px;
 }
@@ -11,7 +11,9 @@
 }
 
 .left .left_content {
-  width: 1000px;
+  width: 100%;
+  margin-left: 8px;
+
 }
 
 .right_content {
@@ -72,6 +74,10 @@
 
 .left .details h5 {
   font-weight: 400;
+}
+
+.comment-block {
+  margin-bottom: 50px;
 }
 
 .comment h4 {
