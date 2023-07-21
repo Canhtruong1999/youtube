@@ -158,7 +158,7 @@
 
 
 <main>
-    <section class="video_content grid">
+    <section class="video_content grid" id="body">
         <div class="video_items">
             <a href="single-page.html">
                 <img src="/images/video_images/back4.jpg" alt="">
@@ -179,6 +179,45 @@
 
 
 <script src="/js/main.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    let videos=[];
+    let body=document.getElementById("body");
+    function render(){
+        body.innerHTML="";
+
+        $.ajax({
+            url: `http://localhost:8080/api/videos`,
+            method: 'GET'
+        }).done(data => {
+            videos = data;
+            let str = "";
+            videos.forEach((video, index) => {
+                str += `
+                <div class="video_items">
+            <a href="/singlePages/show?id=${video.id}">
+                <img src="${video.img}" alt="">
+            </a>
+            <div class="details flex">
+                <div class="img">
+                    <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+                </div>
+                <div class="heading">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
+                    <span>${video.dateSubmit} </span>
+                </div>
+            </div>
+        </div>`
+            })
+            body.innerHTML = str;
+
+
+        })
+    }
+    render();
+</script>
 </body>
 
 </html>

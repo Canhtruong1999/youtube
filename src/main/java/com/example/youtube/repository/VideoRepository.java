@@ -4,6 +4,7 @@ import com.example.youtube.model.Video;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,4 +12,21 @@ import java.util.List;
 @Repository
 public interface VideoRepository extends JpaRepository<Video,Integer> {
 Page<Video> findByTitleContainingOrUser_Username(String title, String user_username, Pageable pageable);
+    @Query("SELECT v.id FROM Video v " +
+            "LEFT JOIN TagDetail td ON v.id = td.video.id " +
+            "LEFT JOIN Tag t ON td.tag.id = t.id " +
+            "WHERE t.title LIKE %:keyword1% OR t.title LIKE %:keyword2% " +
+            "GROUP BY v.id")
+    List<Integer> findVideoIdsByTagTitle( String keyword1, String keyword2);
+    @Query("SELECT t.title, COUNT(*) FROM User u " +
+            "LEFT JOIN View v ON u.id = v.user.id " +
+            "LEFT JOIN Video vi ON v.video.id = vi.id " +
+            "LEFT JOIN TagDetail td ON vi.id = td.video.id " +
+            "LEFT JOIN Tag t ON td.tag.id = t.id " +
+            "WHERE u.id = :userId " +
+            "GROUP BY t.title " +
+            "ORDER BY COUNT(*) DESC " +
+            "LIMIT 2")
+    List<Object[]> findTopTwoTagsByUserId(int userId);
+    Video findById(int id);
 }
