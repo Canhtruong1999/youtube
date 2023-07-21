@@ -74,7 +74,7 @@
                         <i class="fa-brands fa-tiktok nav_icon"></i>
                         <span class="nav_name">Short Video</span>
                     </a>
-                    <a href="#" class="nav_link navtop">
+                    <a href="/studios" class="nav_link navtop">
                         <i class="fa-solid fa-users nav_icon"></i>
                         <span class="nav_name">Channel</span>
                     </a>
@@ -196,11 +196,11 @@
                     <div class="flex">
                         <div class="icon">
                             <i id ="btn-LIKE" class="fa fa-thumbs-up" onclick='like("LIKE")'></i>
-                            <label id ="count-Like">225</label>
+                            <label id ="count-Like"></label>
                         </div>
                         <div class="icon">
-                            <i id="btn-UNLIKE" class="fa fa-thumbs-down" onclick='like("UNLIKE")'></i>
-                            <label>DISLIKE</label>
+                            <i id="btn-DISLIKE" class="fa fa-thumbs-down" onclick='like("DISLIKE")'></i>
+                            <label id="count-DisLike"></label>
                         </div>
                         <div class="icon">
                             <i class="fa fa-share"></i>
@@ -230,10 +230,8 @@
                     <div class="heading">
                         <h4 th:text="${video.user.username}"> <i class="fa fa-circle-check"></i></h4>
                         <span>15M Subscribers</span>
-                        <h5>Responsive Youtube Clone in HTML CSS and Javascript | Dark/LIght Mode | GorkCoder </h5>
-                        <h5>In this video tutorial, I have show how to create a responsive youtube clone using Htlm and
-                            css only</h5>
-                        <span>Show More</span>
+                        <h5 th:text="${video.description}"> </h5>
+
                     </div>
                 </div>
                 <!--        video details            -->
@@ -266,9 +264,7 @@
                             </div>
                             <div class="heading">
                                 <h4>Matheus Silva <span>2 months ago</span></h4>
-                                <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                    officia deserunt mollit anim id est laborum.</p>
+                                <p > </p>
                                 <div class="comment-like flex">
                                     <div class="icon">
                                         <i class="fa fa-thumbs-up"></i>
@@ -313,7 +309,7 @@
                     <label class="tags-bg">Frontend</label>
                     <label class="tags-bg">Backend</label>
                 </div>
---------------------------
+
                 <div class="video_items vide_sidebar flex">
                     <a href="#">
                         <img src="/images/video_images/back5.jpg" alt="">
@@ -376,16 +372,19 @@
             method: 'POST',
             data: JSON.stringify(data)
         }).done(resp => {
-            if(resp){
-                status = resp.likeStatus;
-                if(resp.likeStatus=="LIKE"){
+            if(resp.likeStatus){
+                console.log(resp)
+                status = resp.likeStatus.likeStatus;
+                if(status=='LIKE'){
                     document.getElementById("btn-LIKE").classList.add("i-active");
-
                 }else {
-                    document.getElementById("btn-UNLIKE").classList.add("i-active")
+                    document.getElementById("btn-DISLIKE").classList.add("i-active")
 
                 }
+
             }
+            document.getElementById("count-Like").innerText=resp.countLike;
+            document.getElementById("count-DisLike").innerText=resp.countDisLike;
         })
     }
 
@@ -404,8 +403,9 @@
             method: 'POST',
             data: JSON.stringify(data)
         }).done(e => {
+            document.getElementById("count-Like").innerText=e.countLike;
+            document.getElementById("count-DisLike").innerText=e.countDisLike
 
-            console.log(status)
             if(like_status=="LIKE"){
                 if (status=="LIKE"){
                     document.getElementById("btn-LIKE").classList.remove("i-active");
@@ -414,14 +414,14 @@
                     status="LIKE"
                     document.getElementById("btn-LIKE").classList.add("i-active");
                 }
-                document.getElementById("btn-UNLIKE").classList.remove("i-active")
+                document.getElementById("btn-DISLIKE").classList.remove("i-active")
             }else {
-                if (status=="UNLIKE"){
+                if (status=="DISLIKE"){
                     status="";
-                    document.getElementById("btn-UNLIKE").classList.remove("i-active");
+                    document.getElementById("btn-DISLIKE").classList.remove("i-active");
                 } else {
-                    status="UNLIKE"
-                    document.getElementById("btn-UNLIKE").classList.add("i-active");
+                    status="DISLIKE"
+                    document.getElementById("btn-DISLIKE").classList.add("i-active");
                 }
 
                 document.getElementById("btn-LIKE").classList.remove("i-active");
@@ -430,7 +430,22 @@
 
         })
     }
+    function daysSince(date) {
+        // Lấy ngày hiện tại
+        const currentDate = new Date();
 
+        // Chuyển ngày cụ thể thành đối tượng Date
+        const targetDate = new Date(date);
+
+        // Tính số mili giây giữa hai ngày
+        const timeDifference = currentDate.getTime() - targetDate.getTime();
+
+        // Chuyển số mili giây thành số ngày và làm tròn xuống
+        const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+        return daysPassed;
+    }
+    daysSince(video.dateSubmit)
 
 </script>
 </body>

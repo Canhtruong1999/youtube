@@ -1,9 +1,10 @@
 package com.example.youtube.controller.api;
 
+import com.example.youtube.Service.AuthService;
 import com.example.youtube.Service.like.LikeService;
-import com.example.youtube.Service.user.AuthService;
+
 import com.example.youtube.Service.video.VideoService;
-import com.example.youtube.enums.LikeStatus;
+
 import com.example.youtube.model.Likes;
 import com.example.youtube.model.User;
 import com.example.youtube.model.Video;
@@ -12,7 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/likes")
@@ -31,11 +33,11 @@ public class LikeResController {
     }
 
     @PostMapping ("/create")
-    public void create(@RequestBody Likes request){
+    public ResponseEntity<?> create(@RequestBody Likes request){
 
             User user=  authService.findByName(authService.getCurrentUser());
             if(user==null){
-                return;
+                    return ResponseEntity.status(HttpStatus.NO_CONTENT).body("login first");
             }else {
                 Video video =request.getVideo();
                Likes likes= likeService.findByUserAndVideo(user,video);
@@ -48,7 +50,12 @@ public class LikeResController {
                    likeService.create(likes);
                }
             }
-
+            int countLike=likeService.countLike(request.getVideo());
+            int countDisLike=likeService.countDisLike(request.getVideo());
+            Map<String,Object> data=new HashMap<>();
+            data.put("countLike",countLike);
+            data.put("countDisLike",countDisLike);
+            return ResponseEntity.ok(data);
     }
 
     @PostMapping ("/getLike")
@@ -60,11 +67,14 @@ public class LikeResController {
         }else {
             Video video =request.getVideo();
             Likes likes= likeService.findByUserAndVideo(user,video);
-            return ResponseEntity.ok(likes);
+            int countLike=likeService.countLike(request.getVideo());
+            int countDisLike =likeService.countDisLike(request.getVideo());
+            Map<String,Object> data= new HashMap<>();
+            data.put("likeStatus",likes);
+            data.put("countLike",countLike);
+            data.put("countDisLike",countDisLike);
+            return ResponseEntity.ok(data);
         }
-
-
-
-
     }
+
 }

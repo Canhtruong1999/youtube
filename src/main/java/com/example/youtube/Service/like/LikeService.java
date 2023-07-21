@@ -27,4 +27,7 @@ public class LikeService {
     public int countLike(Video video){
        return likesRepository.countLikesByVideoIdAndLikeStatus(video.getId());
     }
+    public int countDisLike(Video video){
+        return likesRepository.countDisLikesByVideoIdAndLikeStatus(video.getId());
+    }
 }
