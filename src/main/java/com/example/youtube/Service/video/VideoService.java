@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.example.youtube.Service.video;
 
 import com.example.youtube.model.Video;
@@ -48,3 +49,50 @@ public class VideoService {
     }
 
 }
+=======
+package com.example.youtube.Service.video;
+
+import com.example.youtube.model.Video;
+import com.example.youtube.repository.VideoRepository;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class VideoService {
+
+    private VideoRepository videoRepository;
+
+    public VideoService(VideoRepository videoRepository) {
+        this.videoRepository = videoRepository;
+    }
+
+    public List<Video> findAll(){
+        return videoRepository.findAll();
+    }
+    public void createVideo(Video video){
+        videoRepository.save(video);
+    }
+
+    public Video create(Video video){
+
+        return videoRepository.save(video);
+    }
+
+    public void update(Video video){
+        videoRepository.save(video);
+    }
+
+    public Video findById(int id){
+        return videoRepository.findById(id);
+    }
+
+    public void delete(int id){
+        videoRepository.deleteById(id);
+    }
+    public List<Video> findByTitleContainingOrUsername(String title,String user_username){
+
+        return videoRepository.findByTitleContainingOrUser_Username(title, user_username);
+    }
+}
+>>>>>>> b6e282c763f373846fdb22f3c89214c34615ec78
