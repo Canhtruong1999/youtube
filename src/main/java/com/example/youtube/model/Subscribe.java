@@ -1,12 +1,10 @@
 package com.example.youtube.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,8 +14,10 @@ public class Subscribe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    @OneToMany(mappedBy = "subscribe")
-    @JsonIgnore
-    private List<UserSub> userSubs;
+    @ManyToOne
+    @JoinColumn(name = "userSub_id")
+    private User userSub;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

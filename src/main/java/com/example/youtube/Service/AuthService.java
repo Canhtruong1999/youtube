@@ -1,10 +1,11 @@
 package com.example.youtube.service;
 
-import com.example.youtube.service.request.RegisterSaveRequest;
 import com.example.youtube.enums.Role;
 import com.example.youtube.model.User;
 import com.example.youtube.repository.UserRepository;
+import com.example.youtube.service.request.RegisterSaveRequest;
 import com.example.youtube.utils.AppUtils;
+import jakarta.validation.Valid;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,20 +26,20 @@ public class AuthService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
-    public void create(RegisterSaveRequest request){
+    public void create(@Valid RegisterSaveRequest request){
         User user= AppUtils.mapper.map(request,User.class);
         userRepository.save(user);
     }
-    public void register(RegisterSaveRequest request){
+    public void register(com.example.youtube.service.request.@Valid RegisterSaveRequest request){
         var user = AppUtils.mapper.map(request, User.class);
-        user.setRole(Role.ROLE_USER.ROLE_USER);
+        user.setRole(Role.ROLE_USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
-    public boolean checkUsernameOrPhoneNumberOrEmail(RegisterSaveRequest request, BindingResult result){
+    public boolean checkUsernameOrPhoneNumberOrEmail(com.example.youtube.service.request.@Valid RegisterSaveRequest request, BindingResult result){
         boolean check = false;
-        if(userRepository.existsByUsernameIgnoreCase(request.getUserName())){
+        if(userRepository.existsByUsernameIgnoreCase(request.getUsername())){
             result.reject("username", null,
                     "There is already an account registered with the same username");
             check = true;

@@ -19,4 +19,6 @@ public class TagDetail {
     @ManyToOne
     @JoinColumn(name = "video_id")
     private Video video;
+
+
 }

@@ -27,7 +27,7 @@ public class AuthController {
     public String registration(@Valid @ModelAttribute("user") RegisterSaveRequest request,
                                BindingResult result,
                                Model model){
-        authService.checkUsernameOrPhoneNumberOrEmail( request, result);
+        authService.checkUsernameOrPhoneNumberOrEmail(request, result);
         if(result.hasErrors()){
             return "/register";
         }
