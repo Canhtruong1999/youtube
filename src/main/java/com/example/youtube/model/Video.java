@@ -23,12 +23,8 @@ public class Video {
     private LocalDate dateSubmit;
     private String video;
     private String img;
-<<<<<<< HEAD
-    @ManyToOne()
-=======
     private String Description;
     @ManyToOne
->>>>>>> e6de110a987a48446d88fde9696120072013d9bb
     @JoinColumn(name = "user_id")
     private User user;
     @OneToMany(mappedBy = "video",cascade =CascadeType.ALL)

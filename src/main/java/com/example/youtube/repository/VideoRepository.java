@@ -11,21 +11,21 @@ import java.util.List;
 
 @Repository
 public interface VideoRepository extends JpaRepository<Video,Integer> {
-<<<<<<< HEAD
+
+
 
     Page<Video> findByTitleContainingOrUser_Username(String title, String user_username, Pageable pageable);
-    @Query(value = "SELECT v FROM Video v " +
-            "JOIN User u ON v.user.id = u.id " +
-            "WHERE v.title LIKE %:title% OR u.username LIKE %:username%")
-    List<Video> findByTitleContainingOrUser_Username(String title, String username);
-=======
-Page<Video> findByTitleContainingOrUser_Username(String title, String user_username, Pageable pageable);
     @Query("SELECT v.id FROM Video v " +
             "LEFT JOIN TagDetail td ON v.id = td.video.id " +
             "LEFT JOIN Tag t ON td.tag.id = t.id " +
             "WHERE t.title LIKE %:keyword1% OR t.title LIKE %:keyword2% " +
             "GROUP BY v.id")
     List<Integer> findVideoIdsByTagTitle( String keyword1, String keyword2);
+    @Query(value = "SELECT v FROM Video v " +
+            "JOIN User u ON v.user.id = u.id " +
+            "WHERE v.title LIKE %:title% OR u.username LIKE %:username%")
+    List<Video> findByTitleContainingOrUser_Username(String title, String username);
+
     @Query("SELECT t.title, COUNT(*) FROM User u " +
             "LEFT JOIN View v ON u.id = v.user.id " +
             "LEFT JOIN Video vi ON v.video.id = vi.id " +
@@ -37,5 +37,5 @@ Page<Video> findByTitleContainingOrUser_Username(String title, String user_usern
             "LIMIT 2")
     List<Object[]> findTopTwoTagsByUserId(int userId);
     Video findById(int id);
->>>>>>> e6de110a987a48446d88fde9696120072013d9bb
+
 }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <html lang="en">
 
@@ -37,7 +37,7 @@
             </div>
 
             <div class="img">
-                <img src="/images/logo.png" alt="">
+                <img src="/assets/images/logo.png" alt="">
             </div>
         </div>
 
@@ -176,7 +176,7 @@
     <section class="video_items flex">
         <div class="left">
             <div class="left_content">
-                <video controls>
+                <video controls onplaying="getView(\${songSelected.id})" onpause="getDuration()">
                     <source th:src="${video.video}" type="video/mp4" poster="${video.img}">
                 </video>
 
@@ -199,7 +199,7 @@
                             <label id ="count-Like">225</label>
                         </div>
                         <div class="icon">
-                            <i id="btn-UNLIKE" class="fa fa-thumbs-down" onclick='like("UNLIKE")'></i>
+                            <i id="btn-DISLIKE" class="fa fa-thumbs-down" onclick='like("DISLIKE")'></i>
                             <label>DISLIKE</label>
                         </div>
                         <div class="icon">
@@ -225,7 +225,7 @@
                 <!--        video details            -->
                 <div class="details flex border_bottom">
                     <div class="img">
-                        <img src="/images/logo.png" alt="">
+                        <img src="/assets/images/logo.png" alt="">
                     </div>
                     <div class="heading">
                         <h4 th:text="${video.user.username}"> <i class="fa fa-circle-check"></i></h4>
@@ -251,7 +251,7 @@
                     <!--        video comment  by self           -->
                     <div class="details comment_self flex">
                         <div class="img">
-                            <img src="/images/logo.png" alt="">
+                            <img src="/assets/images/logo.png" alt="">
                         </div>
                         <div class="heading">
                             <input type="text" placeholder="Add a comment....">
@@ -290,7 +290,7 @@
                         <label class="tags"> <i class="fa fa-caret-up"></i> Hide Reply </label>
                         <div class="replay-details flex">
                             <div class="img">
-                                <img src="/images/logo.png" alt="">
+                                <img src="/assets/images/logo.png" alt="">
                             </div>
                             <div class="text">
                                 <h4><label>GorkCoder</label> <span>2 months ago</span></h4>
@@ -313,10 +313,10 @@
                     <label class="tags-bg">Frontend</label>
                     <label class="tags-bg">Backend</label>
                 </div>
---------------------------
+
                 <div class="video_items vide_sidebar flex">
                     <a href="#">
-                        <img src="/images/video_images/back5.jpg" alt="">
+                        <img src="/assets/images/video_images/back5.jpg" alt="">
                     </a>
                     <div class="details">
                         <p>How to make hotel booking website with HTML css....</p>
@@ -382,7 +382,7 @@
                     document.getElementById("btn-LIKE").classList.add("i-active");
 
                 }else {
-                    document.getElementById("btn-UNLIKE").classList.add("i-active")
+                    document.getElementById("btn-DISLIKE").classList.add("i-active")
 
                 }
             }
@@ -414,14 +414,14 @@
                     status="LIKE"
                     document.getElementById("btn-LIKE").classList.add("i-active");
                 }
-                document.getElementById("btn-UNLIKE").classList.remove("i-active")
+                document.getElementById("btn-DISLIKE").classList.remove("i-active")
             }else {
-                if (status=="UNLIKE"){
+                if (status=="DISLIKE"){
                     status="";
-                    document.getElementById("btn-UNLIKE").classList.remove("i-active");
+                    document.getElementById("btn-DISLIKE").classList.remove("i-active");
                 } else {
-                    status="UNLIKE"
-                    document.getElementById("btn-UNLIKE").classList.add("i-active");
+                    status="DISLIKE"
+                    document.getElementById("btn-DISLIKE").classList.add("i-active");
                 }
 
                 document.getElementById("btn-LIKE").classList.remove("i-active");
@@ -431,7 +431,30 @@
         })
     }
 
+    var startDate;
+    var pauseDate = 0;
+    var timeOut;
+    var viewCount;
+    // ?action=view&+
+    function getView(idVideo){
+        startDate = new Date();
+        timeOut = setTimeout(() => {
+            $.ajax({
+                url: 'http://localhost:8080/api/view?id=' + idVideo,
+                method: 'GET'
+            }).done(data => {
+                videos = data;},
+            viewCount++);
+            pauseDate =0;
+        }, (10 - pauseDate) * 1000)
+    }
 
+    console.log(viewCount)
+    function getDuration(){
+        clearTimeout(timeOut);
+        let diff = (new Date() - startDate);
+        pauseDate = Math.floor((diff / 1000));
+    }
 </script>
 </body>
 
