@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< Updated upstream
+
 
 
 package com.example.youtube.controller.thymleaf;
