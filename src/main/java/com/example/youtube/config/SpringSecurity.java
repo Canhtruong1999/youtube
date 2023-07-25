@@ -1,3 +1,4 @@
+
 package com.example.youtube.config;
 
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,6 @@ public class SpringSecurity {
         configuration.setExposedHeaders(Arrays.asList("*"));
         final var source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-
         return source;
     }
     @Bean
@@ -76,3 +76,4 @@ public class SpringSecurity {
                 .passwordEncoder(passwordEncoder());
     }
 }
+

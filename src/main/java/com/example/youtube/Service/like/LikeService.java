@@ -19,12 +19,15 @@ public class LikeService {
     }
     public Likes findByUserAndVideo(User user,Video video){
         Likes likes=likesRepository.findLikesByUserIdAndVideoId(user.getId(),video.getId());
-       return likes;
+        return likes;
     }
     public void deleteLike(Likes likes){
         likesRepository.delete(likes);
     }
     public int countLike(Video video){
-       return likesRepository.countLikesByVideoIdAndLikeStatus(video.getId());
+        return likesRepository.countLikesByVideoIdAndLikeStatus(video.getId());
+    }
+    public int countDisLike(Video video){
+        return likesRepository.countDisLikesByVideoIdAndLikeStatus(video.getId());
     }
 }

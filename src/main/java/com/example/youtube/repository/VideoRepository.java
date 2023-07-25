@@ -1,3 +1,4 @@
+
 package com.example.youtube.repository;
 
 import com.example.youtube.model.Video;
@@ -21,6 +22,12 @@ public interface VideoRepository extends JpaRepository<Video,Integer> {
             "WHERE t.title LIKE %:keyword1% OR t.title LIKE %:keyword2% " +
             "GROUP BY v.id")
     List<Integer> findVideoIdsByTagTitle( String keyword1, String keyword2);
+
+    @Query("SELECT v FROM Video v " +
+            "LEFT JOIN TagDetail td ON v.id = td.video.id " +
+            "LEFT JOIN Tag t ON td.tag.id = t.id " +
+            "WHERE t.id = :id ")
+    List<Video> findVideosByTagId(Integer id);
     @Query(value = "SELECT v FROM Video v " +
             "JOIN User u ON v.user.id = u.id " +
             "WHERE v.title LIKE %:title% OR u.username LIKE %:username%")

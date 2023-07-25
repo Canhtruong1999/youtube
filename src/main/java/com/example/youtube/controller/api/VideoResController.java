@@ -1,3 +1,4 @@
+
 package com.example.youtube.controller.api;
 
 import com.example.youtube.Service.AuthService;
@@ -20,6 +21,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -90,7 +92,7 @@ public class VideoResController {
         }
         video.setTagDetails(tags);
         video.setTypeVideo(TypeVideo.VIDEO);
-        video.setDateSubmit(LocalDate.now());
+        video.setDateSubmit(LocalDateTime.now());
 //        TagDetail tagDetailCreate = tagDetailService.create(tagDetail);
 //        tagDetailCreate.getId();
       videoService.create(video);
@@ -123,5 +125,12 @@ public class VideoResController {
         List<Video> videoList = videoService.findByTitleContainingOrUsername(search, search);
         return ResponseEntity.ok(videoList);
     }
+    @GetMapping("/tag/{id}")
+    public ResponseEntity<?> showTags(@PathVariable int id){
+//        Tag tag = tagService.findById(id);
+        List<Video> videos = videoService.findVideosByTagId(id);
 
+        return ResponseEntity.ok(videos);
+    }
 }
+

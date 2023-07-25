@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="images/png" rel="icon" href="/assets/images/icons8-youtube.png">
+    <link type="images/png" rel="icon" href="/images/icons8-youtube.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <title>Youtube </title>
@@ -29,18 +29,21 @@
             </div>
 
             <div class="img">
-                <img src="/assets/images/logo.png" alt="">
+                <img src="/images/logo.png" alt="">
             </div>
+            <br>
         </div>
-
         <div class="toggle">
             <i class="fa-solid fa-bars" id="header-toggle"></i>
         </div>
     </div>
+    <div id="scroll-container" class="style-scope ytd-feed-filter-chip-bar-renderer" style="touch-action: pan-y; color: white" ;="">
+        <button name="button" value="OK" type="button" onclick="showTag()">Âm Nhạc</button>
+        <button name="button" value="OK" type="button" onclick="showTag()">Giải Trí</button>
+        <button name="button" value="OK" type="button" onclick="showTag()">Game</button>
+    </div>
 </header>
 <!--    header      -->
-
-
 <!--    nav      -->
 <section class="nav" id="navbar">
     <nav class="nav_container">
@@ -156,24 +159,9 @@
 </section>
 <!--    nav      -->
 
-
 <main>
     <section class="video_content grid" id="body">
-        <div class="video_items">
-            <a href="single-page.html">
-                <img src="/assets/images/video_images/back4.jpg" alt="">
-            </a>
-            <div class="details flex">
-                <div class="img">
-                    <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
-                </div>
-                <div class="heading">
-                    <p>How to make Hotel Booking Website With HTML CSS ......</p>
-                    <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
-                    <span>56.7M .1 Week ago</span>
-                </div>
-            </div>
-        </div>
+
     </section>
 </main>
 
@@ -211,11 +199,25 @@
         </div>`
             })
             body.innerHTML = str;
-
-
         })
     }
+
+    function showTag(value){
+        console.log(value)
+        $.ajax({
+            url: "/api/videos/tag/{id}",
+            type: 'GET',
+            data: {
+                search: value
+            },
+            success: function (datas) {
+                // renderData(datas)
+                console.log(datas)
+            }
+        });
+    }
     render();
+
 </script>
 </body>
 

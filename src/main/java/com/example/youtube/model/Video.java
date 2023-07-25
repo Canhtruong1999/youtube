@@ -1,15 +1,16 @@
+
 package com.example.youtube.model;
 
 import com.example.youtube.enums.TypeVideo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -20,7 +21,7 @@ public class Video {
     private String title;
     @Enumerated(EnumType.STRING)
     private TypeVideo typeVideo;
-    private LocalDate dateSubmit;
+    private LocalDateTime dateSubmit;
     private String video;
     private String img;
     private String Description;
@@ -30,4 +31,31 @@ public class Video {
     @OneToMany(mappedBy = "video",cascade =CascadeType.ALL)
     @JsonIgnore
     private List<TagDetail> tagDetails;
+    private String imageUrl;
+    private String videoUrl;
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+    private int viewCount;
+    public int getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
+    }
 }
+

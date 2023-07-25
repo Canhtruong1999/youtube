@@ -11,6 +11,5 @@ import java.util.List;
 
 @Repository
 public interface ViewRepository extends JpaRepository<View,Integer> {
-
-
+    int countByVideoId(int videoId);
 }

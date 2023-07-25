@@ -13,6 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/likes")
 public class LikeResController {
@@ -30,24 +33,29 @@ public class LikeResController {
     }
 
     @PostMapping ("/create")
-    public void create(@RequestBody Likes request){
+    public ResponseEntity<?> create(@RequestBody Likes request){
 
-            User user=  authService.findByName(authService.getCurrentUser());
-            if(user==null){
-                return;
+        User user=  authService.findByName(authService.getCurrentUser());
+        if(user==null){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("login first");
+        }else {
+            Video video =request.getVideo();
+            Likes likes= likeService.findByUserAndVideo(user,video);
+            if(likes==null){
+                likeService.create(new Likes(request.getLikeStatus(),user,video));
+            }else if(likes.getLikeStatus()==request.getLikeStatus()){
+                likeService.deleteLike(likes);
             }else {
-                Video video =request.getVideo();
-               Likes likes= likeService.findByUserAndVideo(user,video);
-               if(likes==null){
-                   likeService.create(new Likes(request.getLikeStatus(),user,video));
-               }else if(likes.getLikeStatus()==request.getLikeStatus()){
-                   likeService.deleteLike(likes);
-               }else {
-                   likes.setLikeStatus(request.getLikeStatus());
-                   likeService.create(likes);
-               }
+                likes.setLikeStatus(request.getLikeStatus());
+                likeService.create(likes);
             }
-
+        }
+        int countLike=likeService.countLike(request.getVideo());
+        int countDisLike=likeService.countDisLike(request.getVideo());
+        Map<String,Object> data=new HashMap<>();
+        data.put("countLike",countLike);
+        data.put("countDisLike",countDisLike);
+        return ResponseEntity.ok(data);
     }
 
     @PostMapping ("/getLike")
@@ -59,11 +67,14 @@ public class LikeResController {
         }else {
             Video video =request.getVideo();
             Likes likes= likeService.findByUserAndVideo(user,video);
-            return ResponseEntity.ok(likes);
+            int countLike=likeService.countLike(request.getVideo());
+            int countDisLike =likeService.countDisLike(request.getVideo());
+            Map<String,Object> data= new HashMap<>();
+            data.put("likeStatus",likes);
+            data.put("countLike",countLike);
+            data.put("countDisLike",countDisLike);
+            return ResponseEntity.ok(data);
         }
-
-
-
-
     }
+
 }
