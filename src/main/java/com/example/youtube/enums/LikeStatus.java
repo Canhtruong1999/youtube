@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 
 package com.example.youtube.enums;
 
@@ -7,3 +8,14 @@ public enum LikeStatus {
 }
 
 
+=======
+
+package com.example.youtube.enums;
+
+public enum LikeStatus {
+    LIKE,
+    DISLIKE
+}
+
+
+>>>>>>> Stashed changes
