@@ -128,17 +128,35 @@ public class VideoResController {
         return ResponseEntity.ok(videoList);
     }
     @GetMapping("/tag/{id}")
+<<<<<<< HEAD
 
 //    public ResponseEntity<?> getTagById(@PathVariable int id){
 
     public ResponseEntity<?> showTags(@PathVariable int id){
 
+=======
+<<<<<<< HEAD
+    public ResponseEntity<?> showTags(@PathVariable int id){
+=======
+<<<<<<< HEAD
+    public ResponseEntity<?> getTagById(@PathVariable int id){
+=======
+    public ResponseEntity<?> showTags(@PathVariable int id){
+>>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
+>>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
+>>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
 //        Tag tag = tagService.findById(id);
         List<Video> videos = videoService.findVideosByTagId(id);
 
         return ResponseEntity.ok(videos);
     }
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
     @GetMapping("/tags")
     public ResponseEntity<?> getTags() {
         List<Tag> tagList = tagService.findAll();
@@ -156,5 +174,6 @@ public class VideoResController {
         return null;
 
     }
+>>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
 }
 
