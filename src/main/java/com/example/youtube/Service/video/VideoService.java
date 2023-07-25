@@ -5,6 +5,7 @@ import com.example.youtube.model.Video;
 import com.example.youtube.repository.VideoRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -47,5 +48,14 @@ public class VideoService {
     public List<Video> findVideosByTagId(int id) {
         return videoRepository.findVideosByTagId(id);
     }
+<<<<<<< HEAD
 
+=======
+    public List<Video> findVideoUserLiked(int id){
+        return videoRepository.findLikedVideosByUserId(id);
+    }
+    public List<Video> findVideosByUserId(int id){
+        return videoRepository.findVideosByUserId(id);
+    }
+>>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
 }

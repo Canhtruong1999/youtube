@@ -15,6 +15,7 @@
         .i-active{
             color: blue;
         }
+
     </style>
 </head>
 
@@ -51,7 +52,7 @@
 <section class="nav" id="navbar">
     <nav class="nav_container">
         <div>
-            <a href="#" class="nav_link nav_logo ">
+            <a href="/home" class="nav_link nav_logo ">
                 <i class="fa-solid fa-bars nav_icon"></i>
                 <span class="logo_name">
             <i class="fab fa-youtube"></i>
@@ -61,7 +62,7 @@
 
             <div class="nav_list">
                 <div class="nav_items navtop">
-                    <a href="index.html" class="nav_link navtop active">
+                    <a href="/home" class="nav_link navtop active">
                         <i class="fa fa-house nav_icon"></i>
                         <span class="nav_name">Home</span>
                     </a>
@@ -251,12 +252,13 @@
                             <img src="/images/logo.png" alt="">
                         </div>
                         <div class="heading">
-                            <input type="text" placeholder="Add a comment....">
+                            <input type="text" placeholder="Add a comment...." id="add-comment" >
+                            <button type="button" onclick="addComment()">Add Comment</button>
                         </div>
                     </div>
                     <!--        video comment  by other           -->
 
-                    <div class="details_Comment">
+                    <div class="details_Comment" id="list-comment">
                         <div class="details flex">
                             <div class="img">
                                 <img src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png"/>
@@ -281,6 +283,7 @@
                         </div>
                     </div>
                     <!--        video comment  by other           -->
+<<<<<<< HEAD
                     <div class="replay mb-5">
                         <label class="tags"> <i class="fa fa-caret-up"></i> Hide Reply </label>
                         <div class="replay-details flex">
@@ -293,6 +296,9 @@
                             </div>
                         </div>
                     </div>
+=======
+
+>>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
                     <button class="chat">Show Chat Replay</button>
 
                 </div>
@@ -331,9 +337,13 @@
 
 <script th:inline="javascript">
     let video=[[${video}]]
+    console.log(video)
     let videos=[];
     let body=document.getElementById("body");
     let status;
+    let title=document.getElementById("add-comment");
+    let listComment=[]
+    let listReply=[]
     function render(){
         body.innerHTML="";
 
@@ -429,6 +439,7 @@
 
         })
     }
+<<<<<<< HEAD
     function timeAgo(date) {
         const currentDate = new Date();
         const targetDate = new Date(
@@ -460,6 +471,147 @@
     console.log(video.dateSubmit)
     document.getElementById("dateSubmit").innerText=timeAgo("2023-07-20T12:34:56")
 
+=======
+    // function timeAgo(date) {
+    //     const currentDate = new Date();
+    //     const targetDate = new Date(
+    //         date.year(),
+    //         date.monthValue() - 1,
+    //         date.dayOfMonth(),
+    //         date.hour(),
+    //         date.minute(),
+    //         date.second()
+    //     );
+    //     const timeDifferenceInSeconds = Math.floor((currentDate - targetDate) / 1000);
+    //     if (timeDifferenceInSeconds < 60) {
+    //         return "Vừa xong";
+    //     } else if (timeDifferenceInSeconds < 3600) {
+    //         const minutes = Math.floor(timeDifferenceInSeconds / 60);
+    //         return `${minutes} phút trước`;
+    //     } else if (timeDifferenceInSeconds < 86400) {
+    //         const hours = Math.floor(timeDifferenceInSeconds / 3600);
+    //         return `${hours} giờ trước`;
+    //     } else if (timeDifferenceInSeconds < 604800) {
+    //         const days = Math.floor(timeDifferenceInSeconds / 86400);
+    //         return `${days} ngày trước`;
+    //     } else {
+    //         // Nếu muốn xử lý thời gian lâu hơn, bạn có thể thêm các đơn vị khác như tuần, tháng, năm, vv. ở đây
+    //         return targetDate.toDateString(); // Hoặc trả về ngày tháng năm đầy đủ
+    //     }
+    // }
+    //
+    // console.log(video.dateSubmit)
+    // document.getElementById("dateSubmit").innerText=timeAgo("2023-07-20T12:34:56")
+    function addComment (){
+
+        let data={
+            video:video,
+            title:title.value
+        }
+        console.log(title.value)
+        $.ajax({
+            url: "http://localhost:8080/api/comments",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            data: JSON.stringify(data)
+        }).done(e => {
+            renderComment()
+
+        })
+    }
+    function renderComment(){
+        $.ajax({
+            url: `http://localhost:8080/api/comments/getComment?id=${video.id}`,
+            method: 'GET'
+        }).done(data => {
+            listComment = data;
+            let str = "";
+            listComment.forEach((comment, index) => {
+                str += `
+               <div class="details flex">
+                            <div class="img">
+                                <img src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png"/>
+                            </div>
+                            <div class="heading">
+                                <h4>${comment.user.username} <span>2 months ago</span></h4>
+                                <p >${comment.title} </p>
+                                <div class="comment-like flex">
+
+                                    <div class="icon">
+                                        <label onclick="showInputReply(${comment.id})">REPLY</label>
+                                    </div>
+                                    <div class="icon">
+                                        <label onclick="showReply(${comment.id})">SHOW REPLY</label>
+                                    </div>
+                                </div>
+                                <div class="heading" id="${comment.id}" style="display: none">
+                            <input type="text" placeholder="Add Reply...." id="reply${comment.id}" >
+                            <button type="button" onclick="addReply(${comment.id})">Add Reply</button>
+                        </div>
+                            </div>
+                        </div>
+                            <div class="replay mb-5" id="showReply${comment.id}">
+                            </div>`
+            })
+            document.getElementById("list-comment").innerHTML=str
+        })
+    }
+
+    renderComment()
+    function showInputReply(id){
+        document.getElementById(id).style.display="block"
+    }
+    function addReply(id) {
+        let replyTitle = document.getElementById("reply" + id)
+
+
+        let data = {
+            title: replyTitle.value
+        }
+        $.ajax({
+            url: "http://localhost:8080/api/comments/addReply?commentId=" + id,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            data: JSON.stringify(data)
+        }).done(resp => {
+            alert("success")
+            showReply(id)
+        })
+    }
+    function showReply(id){
+        $.ajax({
+            url: `http://localhost:8080/api/comments/getReply?commentId=`+id,
+            method: 'GET'
+        }).done(data => {
+            listReply=data
+            let str = `
+                        <label class="tags" onclick="hideReply(${id})"> <i class="fa fa-caret-up"></i> Hide Reply </label>`;
+            listReply.forEach((reply, index) => {
+                str += `
+                        <div class="replay-details flex">
+                            <div class="img">
+                                <img src="/images/logo.png" alt="">
+                            </div>
+                            <div class="text">
+                                <h4><label>${reply.user.username}</label> <span>2 months ago</span></h4>
+                                <p>${reply.title}</p>
+                            </div>
+                        </div>
+                    `
+            })
+           document.getElementById("showReply"+id).innerHTML=str;
+        })
+    }
+    function hideReply(id){
+        document.getElementById("showReply"+id).innerHTML="";
+    }
+>>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
 </script>
 </body>
 

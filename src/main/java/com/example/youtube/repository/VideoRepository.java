@@ -44,5 +44,8 @@ public interface VideoRepository extends JpaRepository<Video,Integer> {
             "LIMIT 2")
     List<Object[]> findTopTwoTagsByUserId(int userId);
     Video findById(int id);
-
+    @Query("SELECT v FROM Likes l JOIN Video v ON l.video.id = v.id WHERE l.likeStatus = 'LIKE' AND l.user.id = :userId")
+    List<Video> findLikedVideosByUserId( int userId);
+    @Query("SELECT v FROM Video v WHERE v.user.id = :userId")
+    List<Video> findVideosByUserId(int userId);
 }

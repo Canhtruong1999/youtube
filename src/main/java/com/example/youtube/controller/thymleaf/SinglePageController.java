@@ -1,6 +1,7 @@
 package com.example.youtube.controller.thymleaf;
 
-import com.example.youtube.model.Likes;
+import com.example.youtube.Service.AuthService;
+import com.example.youtube.model.Video;
 import com.example.youtube.repository.VideoRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,16 +13,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/singlePages")
 public class SinglePageController{
     private final VideoRepository videoRepository;
+    private final AuthService authService;
 
 
 
-    public SinglePageController(VideoRepository videoRepository) {
+    public SinglePageController(VideoRepository videoRepository, AuthService authService) {
         this.videoRepository = videoRepository;
+        this.authService = authService;
     }
 
     @GetMapping("/show")
     public String showSinglePages(@RequestParam int id, Model model){
-       model.addAttribute("video", videoRepository.findById(id));
+        Video video=videoRepository.findById(id);
+       model.addAttribute("video",video );
 
         return "single_page";
     }

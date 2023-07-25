@@ -14,7 +14,7 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String tittle;
+    private String title;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
