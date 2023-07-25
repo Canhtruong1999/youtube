@@ -90,14 +90,15 @@
 }
 
 .comment_self input {
+  border-radius: 20px;
   width: 100%;
   padding: 10px;
   margin-top: 15px;
-  background: none;
+  background: #e4e2e25e;
   border: none;
   outline: none;
   color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  /*border-bottom: 0px solid rgba(255, 255, 255, 0.2);*/
 }
 
 .comment_self input::placeholder {
@@ -259,3 +260,69 @@ button {
     object-fit: cover;
   }
 }
+.addComment{
+  margin-top: 10px;
+  top: 20px;
+  padding-top: 20px;
+  height: 37px;
+  width: 102px;
+  border-radius: 20px;
+  background-color: #b8b7b77d;
+  /* border: 1px solid green; */
+  color: white;
+  padding: 9px 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+}
+.addComment:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.addComment:hover {
+  background-color: #c02525;
+}
+.add-reply{
+  border-radius: 20px;
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background: #e4e2e259;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+.reply-button{
+  margin-top: 10px;
+  top: 20px;
+  padding-top: 20px;
+  height: 37px;
+  width: 102px;
+  border-radius: 20px;
+  background-color: #e4e2e259;
+  /* border: 1px solid green; */
+  color: white;
+  padding: 9px 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  float: left;
+}
+.reply-button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+.reply-button:hover {
+  background-color: #c02525;
+}
+.icon-like{
+  cursor: pointer;
+}
+.icon-dislike{
+  cursor: pointer;
+  padding-left: 20px;}

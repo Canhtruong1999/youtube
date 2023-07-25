@@ -19,19 +19,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <title>Youtube </title>
     <style>
-<<<<<<< HEAD
+
         .tags{
             background: #535353;
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 15px;
             margin-right: 10px;
             font-size: 15px;
 
         }
         
         .tags:hover {
-            background-color: #f44336;
+            background-color: #ff0000;
             color: white;
         }
         .search{
@@ -41,16 +41,16 @@
             border-radius: 20px;
         }
 
-=======
+
         .imgAvatar{
             width: 50px;
             height: 50px;
         }
->>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
+
     </style>
 </head>
 
-<body>
+<body style="background-color: #1c1c1c">
 <!--    header      -->
 <header class="header">
     <div class="header_container">
@@ -72,10 +72,13 @@
             <i class="fa-solid fa-bars" id="header-toggle"></i>
         </div>
     </div>
+
+    </div>
     <div id="scroll-container" class="style-scope ytd-feed-filter-chip-bar-renderer" style="touch-action: pan-y; color: white; margin: 10px; "; >
-<!--        <button name="button" value="OK" type="button" onclick="">Âm Nhạc</button>-->
+        <!--        <button name="button" value="OK" type="button" onclick="">Âm Nhạc</button>-->
     </div>
 </header>
+
 
 <!--    header      -->
 <!--    nav      -->
@@ -241,7 +244,7 @@
 </div>
 <script src="/js/main.js" charset="utf-8"></script>
 <main>
-    <section class="video_content grid" id="body" style="padding-top: 80px">
+    <section class="video_content grid" id="body" style="padding-top: 120px">
         <div class="video_items">
             <a href="single-page.html">
                 <img src="/assets/images/video_images/back4.jpg" alt="">
@@ -396,8 +399,7 @@
             }
         });
     }
-<<<<<<< HEAD
-=======
+
     function renderVideoLiked(){
         body.innerHTML="";
 
@@ -429,7 +431,7 @@
         })
     }
 
->>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
+
     render();
 </script>
 

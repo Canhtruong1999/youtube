@@ -1,4 +1,4 @@
-package com.example.youtube.service;
+package com.example.youtube.Service;
 
 import com.example.youtube.model.Tag;
 import com.example.youtube.repository.TagRepository;

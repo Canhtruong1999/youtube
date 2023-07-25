@@ -1,6 +1,7 @@
-package com.example.youtube.service.video.request;
+package com.example.youtube.Service.video.request;
 
-import com.example.youtube.service.tagDetail.request.TagDetailSaveRequest;
+import com.example.youtube.Service.tagDetail.request.TagDetailSaveRequest;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
