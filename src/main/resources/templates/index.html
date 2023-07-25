@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <title>Youtube </title>
+    <style>
+        .imgAvatar{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
 </head>
 
 <body>
@@ -29,9 +35,7 @@
             </div>
 
             <div class="img">
-                <img src="/assets/images/logo.png" alt="">
-            </div>
-            <br>
+                <img class="profileAvatar" src="/assets/images/logo.png" alt="">
         </div>
         <div class="toggle">
             <i class="fa-solid fa-bars" id="header-toggle"></i>
@@ -48,7 +52,7 @@
 <section class="nav" id="navbar">
     <nav class="nav_container">
         <div>
-            <a href="#" class="nav_link nav_logo ">
+            <a href="/home" class="nav_link nav_logo ">
                 <i class="fa-solid fa-bars nav_icon"></i>
                 <span class="logo_name">
                <i class="fab fa-youtube"></i>
@@ -58,7 +62,7 @@
 
             <div class="nav_list">
                 <div class="nav_items navtop">
-                    <a href="#" class="nav_link navtop active">
+                    <a href="/home" class="nav_link navtop active">
                         <i class="fa fa-house nav_icon"></i>
                         <span class="nav_name">Home</span>
                     </a>
@@ -84,7 +88,7 @@
                     </a>
                     <a href="#" class="nav_link navtop">
                         <i class="fa-solid fa-thumbs-up nav_icon"></i>
-                        <span class="nav_name">Like</span>
+                        <span onclick="renderVideoLiked()" class="nav_name">Like</span>
                     </a>
 
                     <div class="nav_dropdown">
@@ -166,7 +170,7 @@
                 <img src="/assets/images/video_images/back4.jpg" alt="">
             </a>
             <div class="details flex">
-                <div class="img">
+                <div class="imgAvatar">
                     <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
                 </div>
                 <div class="heading">
@@ -201,9 +205,12 @@
                 <img src="${video.img}" alt="">
             </a>
             <div class="details flex">
+            <a href="/channelOtherUser?userId=${video.user.id}">
                 <div class="img">
-                    <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+                   <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png"  style=" width: 66px;
+                    height: 43px;" />
                 </div>
+            </a>
                 <div class="heading">
                     <p>${video.title}</p>
                     <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
@@ -230,7 +237,36 @@
             }
         });
     }
+    function renderVideoLiked(){
+        body.innerHTML="";
 
+        $.ajax({
+            url: `http://localhost:8080/api/videos/getVideoLiked`,
+            method: 'GET'
+        }).done(data => {
+            videos = data;
+            let str = "";
+            videos.forEach((video, index) => {
+                str += `
+                <div class="video_items">
+            <a href="/singlePages/show?id=${video.id}">
+                <img src="${video.img}" alt="">
+            </a>
+            <div class="details flex">
+                <div class="img">
+                    <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+                </div>
+                <div class="heading">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
+                    <span>${video.dateSubmit} </span>
+                </div>
+            </div>
+        </div>`
+            })
+            body.innerHTML = str;
+        })
+    }
 
     render();
 </script>

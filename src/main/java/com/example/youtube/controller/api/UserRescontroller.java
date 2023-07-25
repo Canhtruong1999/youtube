@@ -1,8 +1,11 @@
-<<<<<<< HEAD
 package com.example.youtube.controller.api;
 
 
+
+
 import com.example.youtube.Service.AuthService;
+import com.example.youtube.Service.UserService;
+import com.example.youtube.model.User;
 import com.example.youtube.service.request.RegisterSaveRequest;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -14,44 +17,18 @@ import org.springframework.web.bind.annotation.RestController;
     @RestController
     @RequestMapping("/api/users")
 public class UserRescontroller {
-        private final AuthService userService;
-
-    public UserRescontroller(AuthService userService) {
-        this.userService = userService;
+        private final AuthService authService;
+        private final UserService userService ;
+    public UserRescontroller(AuthService authService, UserService userService1) {
+        this.authService = authService;
+        this.userService = userService1;
     }
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody @Valid RegisterSaveRequest request){
-        userService.create(request);
+        authService.create(request);
         return ResponseEntity.noContent().build();
     }
+
 }
-=======
-package com.example.youtube.controller.api;
 
-
-import com.example.youtube.Service.AuthService;
-import com.example.youtube.service.request.RegisterSaveRequest;
-import jakarta.validation.Valid;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-    @RestController
-    @RequestMapping("/api/users")
-public class UserRescontroller {
-        private final AuthService userService;
-
-    public UserRescontroller(AuthService userService) {
-        this.userService = userService;
-    }
-
-    @PostMapping
-    public ResponseEntity<?> create(@RequestBody @Valid RegisterSaveRequest request){
-        userService.create(request);
-        return ResponseEntity.noContent().build();
-    }
-}
->>>>>>> b6e282c763f373846fdb22f3c89214c34615ec78

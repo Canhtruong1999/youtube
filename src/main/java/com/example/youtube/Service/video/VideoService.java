@@ -1,10 +1,11 @@
-<<<<<<< HEAD
+
 package com.example.youtube.Service.video;
 
 import com.example.youtube.model.Video;
 import com.example.youtube.repository.VideoRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -47,55 +48,10 @@ public class VideoService {
     public List<Video> findVideosByTagId(int id) {
         return videoRepository.findVideosByTagId(id);
     }
-
-}
-=======
-package com.example.youtube.Service.video;
-
-import com.example.youtube.model.Video;
-import com.example.youtube.repository.VideoRepository;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-
-@Service
-public class VideoService {
-
-    private VideoRepository videoRepository;
-
-    public VideoService(VideoRepository videoRepository) {
-        this.videoRepository = videoRepository;
+    public List<Video> findVideoUserLiked(int id){
+        return videoRepository.findLikedVideosByUserId(id);
     }
-
-    public List<Video> findAll(){
-        return videoRepository.findAll();
-    }
-    public void createVideo(Video video){
-        videoRepository.save(video);
-    }
-
-    public Video create(Video video){
-
-        return videoRepository.save(video);
-    }
-
-    public void update(Video video){
-        videoRepository.save(video);
-    }
-
-    public Video findById(int id){
-        return videoRepository.findById(id);
-    }
-
-    public void delete(int id){
-        videoRepository.deleteById(id);
-    }
-    public List<Video> findByTitleContainingOrUsername(String title,String user_username){
-
-        return videoRepository.findByTitleContainingOrUser_Username(title, user_username);
+    public List<Video> findVideosByUserId(int id){
+        return videoRepository.findVideosByUserId(id);
     }
 }
-<<<<<<< HEAD
-=======
->>>>>>> b6e282c763f373846fdb22f3c89214c34615ec78
->>>>>>> cdb2ab4e4228a49b611376911b7bf119020a858e

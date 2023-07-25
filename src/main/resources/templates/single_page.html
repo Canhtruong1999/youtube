@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <html lang="en">
@@ -16,6 +15,7 @@
         .i-active{
             color: blue;
         }
+
     </style>
 </head>
 
@@ -53,7 +53,7 @@
 <section class="nav" id="navbar">
     <nav class="nav_container">
         <div>
-            <a href="#" class="nav_link nav_logo ">
+            <a href="/home" class="nav_link nav_logo ">
                 <i class="fa-solid fa-bars nav_icon"></i>
                 <span class="logo_name">
             <i class="fab fa-youtube"></i>
@@ -63,7 +63,7 @@
 
             <div class="nav_list">
                 <div class="nav_items navtop">
-                    <a href="index.html" class="nav_link navtop active">
+                    <a href="/home" class="nav_link navtop active">
                         <i class="fa fa-house nav_icon"></i>
                         <span class="nav_name">Home</span>
                     </a>
@@ -75,7 +75,7 @@
                         <i class="fa-brands fa-tiktok nav_icon"></i>
                         <span class="nav_name">Short Video</span>
                     </a>
-                    <a href="#" class="nav_link navtop">
+                    <a href="/studios" class="nav_link navtop">
                         <i class="fa-solid fa-users nav_icon"></i>
                         <span class="nav_name">Channel</span>
                     </a>
@@ -191,17 +191,17 @@
                 <!--        total viwer            -->
                 <div class="view flex2 border_bottom">
                     <div class="view-text">
-                        <span>693,348 view Premiered 53 minutes ago</span>
+                        <span id ="dateSubmit"></span>
                     </div>
 
                     <div class="flex">
                         <div class="icon">
                             <i id ="btn-LIKE" class="fa fa-thumbs-up" onclick='like("LIKE")'></i>
-                            <label id ="count-Like">225</label>
+                            <label id ="count-Like"></label>
                         </div>
                         <div class="icon">
-                            <i id="btn-UNLIKE" class="fa fa-thumbs-down" onclick='like("UNLIKE")'></i>
-                            <label>DISLIKE</label>
+                            <i id="btn-DISLIKE" class="fa fa-thumbs-down" onclick='like("DISLIKE")'></i>
+                            <label id="count-DisLike"></label>
                         </div>
                         <div class="icon">
                             <i class="fa fa-share"></i>
@@ -231,10 +231,8 @@
                     <div class="heading">
                         <h4 th:text="${video.user.username}"> <i class="fa fa-circle-check"></i></h4>
                         <span>15M Subscribers</span>
-                        <h5>Responsive Youtube Clone in HTML CSS and Javascript | Dark/LIght Mode | GorkCoder </h5>
-                        <h5>In this video tutorial, I have show how to create a responsive youtube clone using Htlm and
-                            css only</h5>
-                        <span>Show More</span>
+                        <h5 th:text="${video.description}"> </h5>
+
                     </div>
                 </div>
                 <!--        video details            -->
@@ -255,452 +253,13 @@
                             <img src="/images/logo.png" alt="">
                         </div>
                         <div class="heading">
-                            <input type="text" placeholder="Add a comment....">
+                            <input type="text" placeholder="Add a comment...." id="add-comment" >
+                            <button type="button" onclick="addComment()">Add Comment</button>
                         </div>
                     </div>
                     <!--        video comment  by other           -->
 
-                    <div class="details_Comment">
-                        <div class="details flex">
-                            <div class="img">
-                                <img src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png"/>
-                            </div>
-                            <div class="heading">
-                                <h4>Matheus Silva <span>2 months ago</span></h4>
-                                <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                    officia deserunt mollit anim id est laborum.</p>
-                                <div class="comment-like flex">
-                                    <div class="icon">
-                                        <i class="fa fa-thumbs-up"></i>
-                                        <label>5</label>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-thumbs-down"></i>
-                                        <label>DISLIKE</label>
-                                    </div>
-                                    <div class="icon">
-                                        <label>REPLY</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--        video comment  by other           -->
-                    <div class="replay mb-5">
-                        <label class="tags"> <i class="fa fa-caret-up"></i> Hide Reply </label>
-                        <div class="replay-details flex">
-                            <div class="img">
-                                <img src="/images/logo.png" alt="">
-                            </div>
-                            <div class="text">
-                                <h4><label>GorkCoder</label> <span>2 months ago</span></h4>
-                                <p>Thanks You</p>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="chat">Show Chat Replay</button>
-
-                </div>
-            </div>
-        </div>
-        <div class="right">
-            <div class="right_content" id="body">
-
-
-                <div class="tags">
-                    <label class="tags-bg">All</label>
-                    <label class="tags-bg">Web Design</label>
-                    <label class="tags-bg">Frontend</label>
-                    <label class="tags-bg">Backend</label>
-                </div>
---------------------------
-                <div class="video_items vide_sidebar flex">
-                    <a href="#">
-                        <img src="/images/video_images/back5.jpg" alt="">
-                    </a>
-                    <div class="details">
-                        <p>How to make hotel booking website with HTML css....</p>
-                        <span>GorkCoder <i class="fa fa-cricle-check"> </i> </span>
-                        <span>56.7M . 1 Week ago</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-</main>
-
-
-<script src="/js/main.js" charset="utf-8"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<script th:inline="javascript">
-    let video=[[${video}]]
-    let videos=[];
-    let body=document.getElementById("body");
-    let status;
-    function render(){
-        body.innerHTML="";
-
-        $.ajax({
-            url: `http://localhost:8080/api/videos`,
-            method: 'GET'
-        }).done(data => {
-            videos = data;
-            let str = "";
-            videos.forEach((video, index) => {
-                str += `
-                <div class="video_items vide_sidebar flex">
-                    <a href="/singlePages/show?id=${video.id}">
-                        <img src="/${video.img}" alt="">
-                    </a>
-                    <div class="details">
-                        <p>${video.title}</p>
-                        <span>${video.user.username} <i class="fa fa-cricle-check"> </i> </span>
-                        <span>56.7M . 1 Week ago</span>
-                    </div>
-                </div>`
-            })
-            body.innerHTML = str;
-        })
-
-        let data={
-            video:video,
-        }
-        $.ajax({
-            url: "http://localhost:8080/api/likes/getLike",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: 'POST',
-            data: JSON.stringify(data)
-        }).done(resp => {
-            if(resp){
-                status = resp.likeStatus;
-                if(resp.likeStatus=="LIKE"){
-                    document.getElementById("btn-LIKE").classList.add("i-active");
-
-                }else {
-                    document.getElementById("btn-UNLIKE").classList.add("i-active")
-
-                }
-            }
-        })
-    }
-
-    render();
-    function like(like_status){
-        let data={
-            video:video,
-            likeStatus:like_status
-        }
-        $.ajax({
-            url: "http://localhost:8080/api/likes/create",
-                headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: 'POST',
-            data: JSON.stringify(data)
-        }).done(e => {
-
-            console.log(status)
-            if(like_status=="LIKE"){
-                if (status=="LIKE"){
-                    document.getElementById("btn-LIKE").classList.remove("i-active");
-                    status="";
-                } else {
-                    status="LIKE"
-                    document.getElementById("btn-LIKE").classList.add("i-active");
-                }
-                document.getElementById("btn-UNLIKE").classList.remove("i-active")
-            }else {
-                if (status=="UNLIKE"){
-                    status="";
-                    document.getElementById("btn-UNLIKE").classList.remove("i-active");
-                } else {
-                    status="UNLIKE"
-                    document.getElementById("btn-UNLIKE").classList.add("i-active");
-                }
-
-                document.getElementById("btn-LIKE").classList.remove("i-active");
-            }
-
-
-        })
-    }
-
-
-</script>
-</body>
-
-=======
- <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="/images/png" rel="icon" href="/images/icons8-youtube.png">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"
-          integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/single.css">
-    <title>Youtube </title>
-    <style>
-        .i-active{
-            color: blue;
-        }
-    </style>
-</head>
-
-<body>
-<!--    header      -->
-<header class="header">
-    <div class="header_container">
-        <div class="none"></div>
-        <div class="search">
-            <input type="text" placeholder="Search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
-
-
-        <div class="user">
-            <div class="icon">
-                <i class="fa-solid fa-video"></i>
-                <i class="fa-solid fa-grip"></i>
-                <i class="fa-solid fa-bell"></i>
-            </div>
-
-            <div class="img">
-                <img src="/assets/images/logo.png" alt="">
-            </div>
-        </div>
-
-        <div class="toggle">
-            <i class="fa-solid fa-bars" id="header-toggle"></i>
-        </div>
-    </div>
-</header>
-<!--    header      -->
-
-<!--    nav      -->
-<section class="nav" id="navbar">
-    <nav class="nav_container">
-        <div>
-            <a href="#" class="nav_link nav_logo ">
-                <i class="fa-solid fa-bars nav_icon"></i>
-                <span class="logo_name">
-            <i class="fab fa-youtube"></i>
-            Youtube
-          </span>
-            </a>
-
-            <div class="nav_list">
-                <div class="nav_items navtop">
-                    <a href="index.html" class="nav_link navtop active">
-                        <i class="fa fa-house nav_icon"></i>
-                        <span class="nav_name">Home</span>
-                    </a>
-                    <a href="#" class="nav_link navtop">
-                        <i class="fa fa-compass nav_icon"></i>
-                        <span class="nav_name">Explore</span>
-                    </a>
-                    <a href="#" class="nav_link navtop">
-                        <i class="fa-brands fa-tiktok nav_icon"></i>
-                        <span class="nav_name">Short Video</span>
-                    </a>
-                    <a href="/studios" class="nav_link navtop">
-                        <i class="fa-solid fa-users nav_icon"></i>
-                        <span class="nav_name">Channel</span>
-                    </a>
-                    <a href="#" class="nav_link navtop">
-                        <i class="fa-solid fa-video nav_icon"></i>
-                        <span class="nav_name">Library</span>
-                    </a>
-                    <a href="#" class="nav_link navtop">
-                        <i class="fa-solid fa-clock-rotate-left nav_icon"></i>
-                        <span class="nav_name">History</span>
-                    </a>
-                    <a href="#" class="nav_link navtop">
-                        <i class="fa-solid fa-thumbs-up nav_icon"></i>
-                        <span class="nav_name">Like</span>
-                    </a>
-
-                    <div class="nav_dropdown">
-                        <a href="#" class="nav_link">
-                            <i class="fa-solid fa-chevron-down nav_icon"></i>
-                            <span class="nav_name">Show More</span>
-                        </a>
-
-                        <div class="nav_dropdown-collapse">
-                            <div class="nav_dropdown-content">
-                                <a href="#" class="nav_dropdown-item">Grid Box</a>
-                                <a href="#" class="nav_dropdown-item">Frontend Design</a>
-                                <a href="#" class="nav_dropdown-item">Backend Design</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="#" class="nav_link">
-                        <i class="fa-solid fa-comment nav_icon"></i>
-                        <span class="nav_name">Messages</span>
-                    </a>
-                </div>
-
-                <div class="nav_items subscribe-container">
-                    <h3 class="nav_subititle">SUBSCRIPTIONS</h3>
-
-                    <a href="#" class="nav_link">
-                        <img class="subscribe"
-                             src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png"
-                             alt="">
-                        <span class="nav_name">GorkCoder</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <img class="subscribe"
-                             src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png"/>
-                        <span class="nav_name">React Maste</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <img class="subscribe"
-                             src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png"/>
-                        <span class="nav_name">Backend Development</span>
-                    </a>
-                    <a href="#" class="nav_link">
-                        <img class="subscribe"
-                             src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
-                        <span class="nav_name">Frontend Development</span>
-                    </a>
-
-
-                    <div class="nav_dropdown">
-                        <a href="#" class="nav_link">
-                            <i class="fa-solid fa-chevron-down nav_icon"></i>
-                            <span class="nav_name">Show 3 More</span>
-                        </a>
-
-                        <div class="nav_dropdown-collapse nav_dropdown-second">
-                            <div class="nav_dropdown-content">
-                                <a href="#" class="nav_dropdown-items">
-                                    <img class="subscribe"
-                                         src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
-                                    <span class="nav_name">Frontend Design</span>
-                                </a>
-                                <a href="#" class="nav_dropdown-items">
-                                    <img class="subscribe"
-                                         src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
-                                    <span class="nav_name">Backend Design</span>
-                                </a>
-                                <a href="#" class="nav_dropdown-items">
-                                    <img class="subscribe"
-                                         src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png"/>
-                                    <span class="nav_name">Backend Design</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-</section>
-<!--    nav      -->
-
-
-<main class="single_pages">
-    <section class="video_items flex">
-        <div class="left">
-            <div class="left_content">
-                <video controls onplaying="getView(\${songSelected.id})" onpause="getDuration()">
-                    <source th:src="${video.video}" type="video/mp4" poster="${video.img}">
-                </video>
-
-                <!--        video tages            -->
-                <div class="tag">
-
-                    <p th:text="${video.title}"></p>
-                </div>
-                <!--        video tages            -->
-
-                <!--        total viwer            -->
-                <div class="view flex2 border_bottom">
-                    <div class="view-text">
-                        <span>693,348 view Premiered 53 minutes ago</span>
-                    </div>
-
-                    <div class="flex">
-                        <div class="icon">
-                            <i id ="btn-LIKE" class="fa fa-thumbs-up" onclick='like("LIKE")'></i>
-                            <label id ="count-Like"></label>
-                        </div>
-                        <div class="icon">
-                            <i id="btn-DISLIKE" class="fa fa-thumbs-down" onclick='like("DISLIKE")'></i>
-<<<<<<< HEAD
-                            <label id="count-DisLike"></label>
-=======
-                            <label>DISLIKE</label>
->>>>>>> cdb2ab4e4228a49b611376911b7bf119020a858e
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-share"></i>
-                            <label>SHARE</label>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-scissors"></i>
-                            <label>CLIP</label>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-bookmark"></i>
-                            <label>SAVE</label>
-                        </div>
-                        <div class="icon">
-                            <i class="fa fa-ellipsis"></i>
-                        </div>
-                    </div>
-                </div>
-                <!--        total viwer            -->
-
-
-                <!--        video details            -->
-                <div class="details flex border_bottom">
-                    <div class="img">
-                        <img src="/assets/images/logo.png" alt="">
-                    </div>
-                    <div class="heading">
-                        <h4 th:text="${video.user.username}"> <i class="fa fa-circle-check"></i></h4>
-                        <span>15M Subscribers</span>
-                        <h5 th:text="${video.description}"> </h5>
-
-                    </div>
-                </div>
-                <!--        video details            -->
-
-
-                <div class="comment-block">
-                    <!--        video comment            -->
-                    <div class="comment">
-                        <div class="comment-heading flex">
-                            <h4>120 Comments</h4>
-                            <h4><i class="fa fa-list-ul"></i> <label>SORT BY</label></h4>
-                        </div>
-                    </div>
-
-                    <!--        video comment  by self           -->
-                    <div class="details comment_self flex">
-                        <div class="img">
-                            <img src="/assets/images/logo.png" alt="">
-                        </div>
-                        <div class="heading">
-                            <input type="text" placeholder="Add a comment....">
-                        </div>
-                    </div>
-                    <!--        video comment  by other           -->
-
-                    <div class="details_Comment">
+                    <div class="details_Comment" id="list-comment">
                         <div class="details flex">
                             <div class="img">
                                 <img src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png"/>
@@ -725,18 +284,7 @@
                         </div>
                     </div>
                     <!--        video comment  by other           -->
-                    <div class="replay mb-5">
-                        <label class="tags"> <i class="fa fa-caret-up"></i> Hide Reply </label>
-                        <div class="replay-details flex">
-                            <div class="img">
-                                <img src="/assets/images/logo.png" alt="">
-                            </div>
-                            <div class="text">
-                                <h4><label>GorkCoder</label> <span>2 months ago</span></h4>
-                                <p>Thanks You</p>
-                            </div>
-                        </div>
-                    </div>
+
                     <button class="chat">Show Chat Replay</button>
 
                 </div>
@@ -755,7 +303,7 @@
 
                 <div class="video_items vide_sidebar flex">
                     <a href="#">
-                        <img src="/assets/images/video_images/back5.jpg" alt="">
+                        <img src="/images/video_images/back5.jpg" alt="">
                     </a>
                     <div class="details">
                         <p>How to make hotel booking website with HTML css....</p>
@@ -775,9 +323,13 @@
 
 <script th:inline="javascript">
     let video=[[${video}]]
+    console.log(video)
     let videos=[];
     let body=document.getElementById("body");
     let status;
+    let title=document.getElementById("add-comment");
+    let listComment=[]
+    let listReply=[]
     function render(){
         body.innerHTML="";
 
@@ -839,7 +391,7 @@
         }
         $.ajax({
             url: "http://localhost:8080/api/likes/create",
-                headers: {
+            headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
@@ -873,51 +425,146 @@
 
         })
     }
-    function daysSince(date) {
-        // Lấy ngày hiện tại
-        const currentDate = new Date();
+    // function timeAgo(date) {
+    //     const currentDate = new Date();
+    //     const targetDate = new Date(
+    //         date.year(),
+    //         date.monthValue() - 1,
+    //         date.dayOfMonth(),
+    //         date.hour(),
+    //         date.minute(),
+    //         date.second()
+    //     );
+    //     const timeDifferenceInSeconds = Math.floor((currentDate - targetDate) / 1000);
+    //     if (timeDifferenceInSeconds < 60) {
+    //         return "Vừa xong";
+    //     } else if (timeDifferenceInSeconds < 3600) {
+    //         const minutes = Math.floor(timeDifferenceInSeconds / 60);
+    //         return `${minutes} phút trước`;
+    //     } else if (timeDifferenceInSeconds < 86400) {
+    //         const hours = Math.floor(timeDifferenceInSeconds / 3600);
+    //         return `${hours} giờ trước`;
+    //     } else if (timeDifferenceInSeconds < 604800) {
+    //         const days = Math.floor(timeDifferenceInSeconds / 86400);
+    //         return `${days} ngày trước`;
+    //     } else {
+    //         // Nếu muốn xử lý thời gian lâu hơn, bạn có thể thêm các đơn vị khác như tuần, tháng, năm, vv. ở đây
+    //         return targetDate.toDateString(); // Hoặc trả về ngày tháng năm đầy đủ
+    //     }
+    // }
+    //
+    // console.log(video.dateSubmit)
+    // document.getElementById("dateSubmit").innerText=timeAgo("2023-07-20T12:34:56")
+    function addComment (){
 
-<<<<<<< HEAD
-        // Chuyển ngày cụ thể thành đối tượng Date
-        const targetDate = new Date(date);
+        let data={
+            video:video,
+            title:title.value
+        }
+        console.log(title.value)
+        $.ajax({
+            url: "http://localhost:8080/api/comments",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            data: JSON.stringify(data)
+        }).done(e => {
+            renderComment()
 
-        // Tính số mili giây giữa hai ngày
-        const timeDifference = currentDate.getTime() - targetDate.getTime();
-
-        // Chuyển số mili giây thành số ngày và làm tròn xuống
-        const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-
-        return daysPassed;
+        })
     }
-    daysSince(video.dateSubmit)
-=======
-    var startDate;
-    var pauseDate = 0;
-    var timeOut;
-    var viewCount;
-    // ?action=view&+
-    function getView(idVideo){
-        startDate = new Date();
-        timeOut = setTimeout(() => {
-            $.ajax({
-                url: 'http://localhost:8080/api/view?id=' + idVideo,
-                method: 'GET'
-            }).done(data => {
-                videos = data;},
-            viewCount++);
-            pauseDate =0;
-        }, (10 - pauseDate) * 1000)
-    }
->>>>>>> cdb2ab4e4228a49b611376911b7bf119020a858e
+    function renderComment(){
+        $.ajax({
+            url: `http://localhost:8080/api/comments/getComment?id=${video.id}`,
+            method: 'GET'
+        }).done(data => {
+            listComment = data;
+            let str = "";
+            listComment.forEach((comment, index) => {
+                str += `
+               <div class="details flex">
+                            <div class="img">
+                                <img src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png"/>
+                            </div>
+                            <div class="heading">
+                                <h4>${comment.user.username} <span>2 months ago</span></h4>
+                                <p >${comment.title} </p>
+                                <div class="comment-like flex">
 
-    console.log(viewCount)
-    function getDuration(){
-        clearTimeout(timeOut);
-        let diff = (new Date() - startDate);
-        pauseDate = Math.floor((diff / 1000));
+                                    <div class="icon">
+                                        <label onclick="showInputReply(${comment.id})">REPLY</label>
+                                    </div>
+                                    <div class="icon">
+                                        <label onclick="showReply(${comment.id})">SHOW REPLY</label>
+                                    </div>
+                                </div>
+                                <div class="heading" id="${comment.id}" style="display: none">
+                            <input type="text" placeholder="Add Reply...." id="reply${comment.id}" >
+                            <button type="button" onclick="addReply(${comment.id})">Add Reply</button>
+                        </div>
+                            </div>
+                        </div>
+                            <div class="replay mb-5" id="showReply${comment.id}">
+                            </div>`
+            })
+            document.getElementById("list-comment").innerHTML=str
+        })
+    }
+
+    renderComment()
+    function showInputReply(id){
+        document.getElementById(id).style.display="block"
+    }
+    function addReply(id) {
+        let replyTitle = document.getElementById("reply" + id)
+
+
+        let data = {
+            title: replyTitle.value
+        }
+        $.ajax({
+            url: "http://localhost:8080/api/comments/addReply?commentId=" + id,
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            data: JSON.stringify(data)
+        }).done(resp => {
+            alert("success")
+            showReply(id)
+        })
+    }
+    function showReply(id){
+        $.ajax({
+            url: `http://localhost:8080/api/comments/getReply?commentId=`+id,
+            method: 'GET'
+        }).done(data => {
+            listReply=data
+            let str = `
+                        <label class="tags" onclick="hideReply(${id})"> <i class="fa fa-caret-up"></i> Hide Reply </label>`;
+            listReply.forEach((reply, index) => {
+                str += `
+                        <div class="replay-details flex">
+                            <div class="img">
+                                <img src="/images/logo.png" alt="">
+                            </div>
+                            <div class="text">
+                                <h4><label>${reply.user.username}</label> <span>2 months ago</span></h4>
+                                <p>${reply.title}</p>
+                            </div>
+                        </div>
+                    `
+            })
+           document.getElementById("showReply"+id).innerHTML=str;
+        })
+    }
+    function hideReply(id){
+        document.getElementById("showReply"+id).innerHTML="";
     }
 </script>
 </body>
 
->>>>>>> b6e282c763f373846fdb22f3c89214c34615ec78
 </html>
