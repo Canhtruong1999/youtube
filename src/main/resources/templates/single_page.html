@@ -259,46 +259,10 @@
                     <!--        video comment  by other           -->
 
                     <div class="details_Comment" id="list-comment">
-                        <div class="details flex">
-                            <div class="img">
-                                <img src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png"/>
-                            </div>
-                            <div class="heading">
-                                <h4>Matheus Silva <span>2 months ago</span></h4>
-                                <p > </p>
-                                <div class="comment-like flex">
-                                    <div class="icon">
-                                        <i class="fa fa-thumbs-up"></i>
-                                        <label>5</label>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fa fa-thumbs-down"></i>
-                                        <label>DISLIKE</label>
-                                    </div>
-                                    <div class="icon">
-                                        <label>REPLY</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                     <!--        video comment  by other           -->
-<<<<<<< HEAD
-                    <div class="replay mb-5">
-                        <label class="tags"> <i class="fa fa-caret-up"></i> Hide Reply </label>
-                        <div class="replay-details flex">
-                            <div class="img">
-                                <img src="/images/logo.png" alt="">
-                            </div>
-                            <div class="text">
-                                <h4><label>GorkCoder</label> <span>2 months ago</span></h4>
-                                <p>Thanks You</p>
-                            </div>
-                        </div>
-                    </div>
-=======
 
->>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
                     <button class="chat">Show Chat Replay</button>
 
                 </div>
@@ -398,6 +362,7 @@
     }
 
     render();
+    renderComment();
     function like(like_status){
         let data={
             video:video,
@@ -439,69 +404,8 @@
 
         })
     }
-<<<<<<< HEAD
-    function timeAgo(date) {
-        const currentDate = new Date();
-        const targetDate = new Date(
-            date.year(),
-            date.monthValue() - 1,
-            date.dayOfMonth(),
-            date.hour(),
-            date.minute(),
-            date.second()
-        );
-        const timeDifferenceInSeconds = Math.floor((currentDate - targetDate) / 1000);
-        if (timeDifferenceInSeconds < 60) {
-            return "Vừa xong";
-        } else if (timeDifferenceInSeconds < 3600) {
-            const minutes = Math.floor(timeDifferenceInSeconds / 60);
-            return `${minutes} phút trước`;
-        } else if (timeDifferenceInSeconds < 86400) {
-            const hours = Math.floor(timeDifferenceInSeconds / 3600);
-            return `${hours} giờ trước`;
-        } else if (timeDifferenceInSeconds < 604800) {
-            const days = Math.floor(timeDifferenceInSeconds / 86400);
-            return `${days} ngày trước`;
-        } else {
-            // Nếu muốn xử lý thời gian lâu hơn, bạn có thể thêm các đơn vị khác như tuần, tháng, năm, vv. ở đây
-            return targetDate.toDateString(); // Hoặc trả về ngày tháng năm đầy đủ
-        }
-    }
 
-    console.log(video.dateSubmit)
-    document.getElementById("dateSubmit").innerText=timeAgo("2023-07-20T12:34:56")
 
-=======
-    // function timeAgo(date) {
-    //     const currentDate = new Date();
-    //     const targetDate = new Date(
-    //         date.year(),
-    //         date.monthValue() - 1,
-    //         date.dayOfMonth(),
-    //         date.hour(),
-    //         date.minute(),
-    //         date.second()
-    //     );
-    //     const timeDifferenceInSeconds = Math.floor((currentDate - targetDate) / 1000);
-    //     if (timeDifferenceInSeconds < 60) {
-    //         return "Vừa xong";
-    //     } else if (timeDifferenceInSeconds < 3600) {
-    //         const minutes = Math.floor(timeDifferenceInSeconds / 60);
-    //         return `${minutes} phút trước`;
-    //     } else if (timeDifferenceInSeconds < 86400) {
-    //         const hours = Math.floor(timeDifferenceInSeconds / 3600);
-    //         return `${hours} giờ trước`;
-    //     } else if (timeDifferenceInSeconds < 604800) {
-    //         const days = Math.floor(timeDifferenceInSeconds / 86400);
-    //         return `${days} ngày trước`;
-    //     } else {
-    //         // Nếu muốn xử lý thời gian lâu hơn, bạn có thể thêm các đơn vị khác như tuần, tháng, năm, vv. ở đây
-    //         return targetDate.toDateString(); // Hoặc trả về ngày tháng năm đầy đủ
-    //     }
-    // }
-    //
-    // console.log(video.dateSubmit)
-    // document.getElementById("dateSubmit").innerText=timeAgo("2023-07-20T12:34:56")
     function addComment (){
 
         let data={
@@ -536,7 +440,7 @@
                                 <img src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png"/>
                             </div>
                             <div class="heading">
-                                <h4>${comment.user.username} <span>2 months ago</span></h4>
+                                <h4>${comment.user.username} <span></span></h4>
                                 <p >${comment.title} </p>
                                 <div class="comment-like flex">
 
@@ -560,7 +464,7 @@
         })
     }
 
-    renderComment()
+
     function showInputReply(id){
         document.getElementById(id).style.display="block"
     }
@@ -599,7 +503,7 @@
                                 <img src="/images/logo.png" alt="">
                             </div>
                             <div class="text">
-                                <h4><label>${reply.user.username}</label> <span>2 months ago</span></h4>
+                                <h4><label>${reply.user.username}</label> <span></span></h4>
                                 <p>${reply.title}</p>
                             </div>
                         </div>
@@ -611,7 +515,7 @@
     function hideReply(id){
         document.getElementById("showReply"+id).innerHTML="";
     }
->>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
+
 </script>
 </body>
 
