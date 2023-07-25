@@ -198,11 +198,11 @@
                     </div>
 
                     <div class="flex">
-                        <div class="icon">
+                        <div class="icon-like">
                             <i id ="btn-LIKE" class="fa fa-thumbs-up" onclick='like("LIKE")'></i>
-                            <label id ="count-Like"></label>
+                            <label id ="count-Like" ></label>
                         </div>
-                        <div class="icon">
+                        <div class="icon-dislike">
                             <i id="btn-DISLIKE" class="fa fa-thumbs-down" onclick='like("DISLIKE")'></i>
                             <label id="count-DisLike"></label>
                         </div>
@@ -256,8 +256,8 @@
                             <img src="/images/logo.png" alt="">
                         </div>
                         <div class="heading">
-                            <input type="text" placeholder="Add a comment...." id="add-comment" >
-                            <button type="button" onclick="addComment()">Add Comment</button>
+                            <input class="input-comment" type="text" placeholder="Add a comment...." id="add-comment" >
+                            <button class="addComment" type="button" onclick="addComment()">Comment</button>
                         </div>
                     </div>
                     <!--        video comment  by other           -->
@@ -409,6 +409,10 @@
         })
     }
 <<<<<<< HEAD
+
+
+=======
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -442,10 +446,13 @@
         }
 <<<<<<< HEAD
     }
+>>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
 
     console.log(video.dateSubmit)
     document.getElementById("dateSubmit").innerText=timeAgo("2023-07-20T12:34:56")
 
+<<<<<<< HEAD
+=======
     var startDate;
     var pauseDate = 0;
     var timeOut;
@@ -480,6 +487,7 @@
 =======
     }
 >>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
+>>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
 
 
     function addComment (){
@@ -528,8 +536,8 @@
                                     </div>
                                 </div>
                                 <div class="heading" id="${comment.id}" style="display: none">
-                            <input type="text" placeholder="Add Reply...." id="reply${comment.id}" >
-                            <button type="button" onclick="addReply(${comment.id})">Add Reply</button>
+                            <input class="add-reply" type="text" placeholder="Add Reply...." id="reply${comment.id}" >
+                            <button class="reply-button"  type="button" onclick="addReply(${comment.id})">Add Reply</button>
                         </div>
                             </div>
                         </div>
@@ -594,9 +602,13 @@
 <<<<<<< HEAD
 
 =======
+<<<<<<< HEAD
+
+=======
 >>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
 >>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
 >>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
+>>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
 </script>
 </body>
 

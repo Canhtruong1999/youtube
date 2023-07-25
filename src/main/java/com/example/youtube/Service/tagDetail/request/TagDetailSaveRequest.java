@@ -13,7 +13,4 @@ import lombok.NoArgsConstructor;
 public class TagDetailSaveRequest {
     private String tag;
 
-
-
-
 }
