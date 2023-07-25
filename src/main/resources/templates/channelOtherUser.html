@@ -203,7 +203,7 @@
   </section>
 </main>
 
-<script src="/js/main.js" charset="utf-8"></script>
+
 
 <script th:inline="javascript">
     let videos=[[${videos}]]
@@ -236,7 +236,7 @@
       let data={
        user:user
       }
-      console.log(title.value)
+
       $.ajax({
         url: "http://localhost:8080/api/subscribes",
         headers: {
