@@ -25,4 +25,6 @@ public interface UserRepository extends JpaRepository<User,Integer> {
             "LIMIT 3")
     List<Object[]> findTopTwoTagsByUserId(int userId);
     User findByUsername(String username);
+    User findById(int id);
+
 }

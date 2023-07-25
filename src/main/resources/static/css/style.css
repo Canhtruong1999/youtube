@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
 *, ::before, ::after {
   box-sizing: border-box;
 }
@@ -51,7 +51,7 @@ header .search {
   display: flex;
   padding: 7px 12px;
   background-color: #121212;
-  border-radius: 4px;
+  border-radius: 50px;
 }
 
 header input {
@@ -313,8 +313,8 @@ header .toggle {
   }
 
   header .search {
-    width: 300px;
-    padding: 9px 12px;
+    width: 400px;
+    padding: 7px 12px;
   }
 
   header .toggle {
@@ -326,8 +326,8 @@ header .toggle {
   }
 
   header .img {
-    width: 40px;
-    height: 40px;
+    width: 148px;
+    height: 128px;
     order: 1;
   }
 
@@ -400,4 +400,8 @@ header .toggle {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
   }
+}
+.tags{
+  color: red;
+  color: red;
 }

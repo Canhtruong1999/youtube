@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="images/png" rel="icon" href="/assets/images/icons8-youtube.png">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <title>Youtube </title>
+  <style>
+    .avatar{
+      margin-right: 20px;
+      padding-top: 20px;
+      margin-left: 10px;
+    }
+    .title-channel{
+      margin-right: 20px;
+      padding-top: 5px;
+      margin-left: 10px;
+      font-size: 35px;
+      color: white;
+    }
+
+  </style>
+</head>
+
+<body>
+<!--    header      -->
+<header class="header">
+<!--  <div>-->
+
+<!--      <img class="img" src="/images/logo.png" alt>-->
+
+<!--      <h5 th:text="${user.username}" ></h5>-->
+
+<!--      <button type="button" onclick="subcribe()" > Subscribe</button>-->
+
+<!--  </div>-->
+<!--  <div id="inner-header-container" class="style-scope ytd-c4-tabbed-header-renderer"><div id="meta" class="style-scope ytd-c4-tabbed-header-renderer"><ytd-channel-name id="channel-name" wrap-text="" class="style-scope ytd-c4-tabbed-header-renderer">&lt;!&ndash;css-build:shady&ndash;&gt;&lt;!&ndash;css-build:shady&ndash;&gt;<div id="container" class="style-scope ytd-channel-name">-->
+      <div style="display: flex">
+          <div class="avatar">
+          <img class="img" src="/images/logo.png" alt>
+            </div>
+        <div >
+          <h5 class="title-channel" th:text="${user.username}" ></h5>
+          </div>
+        <div>
+          <br>
+          <h5> 1 người đăng kí</h5>
+          <h5>3 video</h5>
+          </div>
+          <button type="button" onclick="subscribe()" > Subscribe</button>
+
+      </div>
+
+  </div>
+
+
+<!--    </tp-yt-paper-tooltip></div><dom-repeat id="repeat" as="badge" class="style-scope ytd-badge-supported-renderer"><template is="dom-repeat"></template></dom-repeat></ytd-badge-supported-renderer>-->
+<!--  </a>-->
+<!--  </ytd-channel-tagline-renderer></div><div id="channel-header-links" class="style-scope ytd-c4-tabbed-header-renderer"></div></div><div id="buttons" class="style-scope ytd-c4-tabbed-header-renderer"><div id="purchase-button" class="channel-action style-scope ytd-c4-tabbed-header-renderer"></div><div id="subscribe-button" class="channel-action style-scope ytd-c4-tabbed-header-renderer"style="text-align: right; padding-bottom: 10px"><ytd-subscribe-button-renderer class="style-scope ytd-c4-tabbed-header-renderer" use-keyboard-focused="" foreground-lottie-ref="{}" background-lottie-ref="{}" unsubscribe-button-hidden="">&lt;!&ndash;css-build:shady&ndash;&gt;&lt;!&ndash;css-build:shady&ndash;&gt;<yt-smartimation class="style-scope ytd-subscribe-button-renderer">-->
+<!--    <yt-button-shape id="subscribe-button-shape" version="modern" class="style-scope ytd-subscribe-button-renderer"><button onclick="subscribe()" class="yt-spec-button-shape-next yt-spec-button-shape-next&#45;&#45;filled yt-spec-button-shape-next&#45;&#45;mono yt-spec-button-shape-next&#45;&#45;size-m " aria-label="Đăng ký Mùa Đi Ngang Phố." style=""><div class="cbox yt-spec-button-shape-next__button-text-content"><span class="submit" role="text" style="text-align: right">Đăng ký</span></div><yt-touch-feedback-shape style="border-radius: 20px;"><div class="yt-spec-touch-feedback-shape yt-spec-touch-feedback-shape&#45;&#45;touch-response-inverse" aria-hidden="true"><div class="yt-spec-touch-feedback-shape__stroke" style=""></div><div class="yt-spec-touch-feedback-shape__fill" style=""></div></div></yt-touch-feedback-shape></button></yt-button-shape>-->
+<!--    <div id="notification-preference-toggle-button" class="style-scope ytd-subscribe-button-renderer" hidden=""></div>-->
+<!--    </ytd-subscription-notification-toggle-button-renderer-next></div></__slot-el></div></yt-animated-action>-->
+<!--  </yt-smartimation>-->
+<!--  </ytd-subscribe-button-renderer></div><div id="sponsor-button" class="channel-action style-scope ytd-c4-tabbed-header-renderer"></div><div id="edit-buttons" class="channel-action style-scope ytd-c4-tabbed-header-renderer"></div><div id="other-buttons" class="channel-action style-scope ytd-c4-tabbed-header-renderer"></div></div></div>-->
+
+</header>
+<!--    header      -->
+<!--    nav      -->
+<section class="nav" id="navbar">
+  <nav class="nav_container">
+    <div>
+      <a href="/home" class="nav_link nav_logo ">
+        <i class="fa-solid fa-bars nav_icon"></i>
+        <span class="logo_name">
+               <i class="fab fa-youtube"></i>
+               Youtube
+             </span>
+      </a>
+
+      <div class="nav_list">
+        <div class="nav_items navtop">
+          <a href="/home" class="nav_link navtop active">
+            <i class="fa fa-house nav_icon"></i>
+            <span class="nav_name">Home</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa fa-compass nav_icon"></i>
+            <span class="nav_name">Explore</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-brands fa-tiktok nav_icon"></i>
+            <span class="nav_name">Short Video</span>
+          </a>
+          <a href="/studios" class="nav_link navtop" target="_blank">
+            <i class="fa-solid fa-users nav_icon"></i>
+            <span class="nav_name">Channel</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-solid fa-video nav_icon"></i>
+            <span class="nav_name">Library</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-solid fa-clock-rotate-left nav_icon"></i>
+            <span class="nav_name">History</span>
+          </a>
+          <a href="#" class="nav_link navtop">
+            <i class="fa-solid fa-thumbs-up nav_icon"></i>
+            <span onclick="renderVideoLiked()" class="nav_name">Like</span>
+          </a>
+
+          <div class="nav_dropdown">
+            <a href="#" class="nav_link">
+              <i class="fa-solid fa-chevron-down nav_icon"></i>
+              <span class="nav_name">Show More</span>
+            </a>
+
+            <div class="nav_dropdown-collapse">
+              <div class="nav_dropdown-content">
+                <a href="#" class="nav_dropdown-item">Grid Box</a>
+                <a href="#" class="nav_dropdown-item">Frontend Design</a>
+                <a href="#" class="nav_dropdown-item">Backend Design</a>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="nav_link">
+            <i class="fa-solid fa-comment nav_icon"></i>
+            <span class="nav_name">Messages</span>
+          </a>
+        </div>
+
+        <div class="nav_items subscribe-container">
+          <h3 class="nav_subititle">SUBSCRIPTIONS</h3>
+
+          <a href="#" class="nav_link">
+            <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png" alt="">
+            <span class="nav_name">GorkCoder</span>
+          </a>
+          <a href="#" class="nav_link">
+            <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png" />
+            <span class="nav_name">React Maste</span>
+          </a>
+          <a href="#" class="nav_link">
+            <img class="subscribe" src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+            <span class="nav_name">Backend Development</span>
+          </a>
+          <a href="#" class="nav_link">
+            <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
+            <span class="nav_name">Frontend Development</span>
+          </a>
+
+
+          <div class="nav_dropdown">
+            <a href="#" class="nav_link">
+              <i class="fa-solid fa-chevron-down nav_icon"></i>
+              <span class="nav_name">Show 3 More</span>
+            </a>
+
+            <div class="nav_dropdown-collapse nav_dropdown-second">
+              <div class="nav_dropdown-content">
+                <a href="#" class="nav_dropdown-items">
+                  <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
+                  <span class="nav_name">Frontend Design</span>
+                </a>
+                <a href="#" class="nav_dropdown-items">
+                  <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
+                  <span class="nav_name">Backend Design</span>
+                </a>
+                <a href="#" class="nav_dropdown-items">
+                  <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
+                  <span class="nav_name">Backend Design</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</section>
+<!--    nav      -->
+
+<main>
+  <section class="video_content grid" id="body"style="padding-top: 130px">
+    <div class="video_items">
+      <a href="single-page.html">
+        <img src="/assets/images/video_images/back4.jpg" alt="">
+      </a>
+      <div class="details flex">
+        <div class="img">
+          <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+        </div>
+        <div class="heading">
+          <p>How to make Hotel Booking Website With HTML CSS ......</p>
+          <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
+          <span>56.7M .1 Week ago</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+<script th:inline="javascript">
+    let videos=[[${videos}]]
+    let user=[[${user}]]
+    function render(){
+      body.innerHTML="";
+        let str = "";
+        videos.forEach((video, index) => {
+          str += `
+                <div class="video_items">
+            <a href="/singlePages/show?id=${video.id}">
+                <img src="${video.img}" alt="">
+            </a>
+            <div class="details flex">
+                <div class="img">
+                    <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+                </div>
+                <div class="heading">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
+                    <span>${video.dateSubmit} </span>
+                </div>
+            </div>
+        </div>`
+        })
+        body.innerHTML = str;
+    }
+    render()
+    function subscribe(){
+      let data={
+       user:user
+      }
+
+      $.ajax({
+        url: "http://localhost:8080/api/subscribes",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        data: JSON.stringify(data)
+      }).done(e => {
+        renderComment()
+
+      })
+    }
+</script>
+</body>
+</html>

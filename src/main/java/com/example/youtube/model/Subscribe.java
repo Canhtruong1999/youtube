@@ -20,4 +20,9 @@ public class Subscribe {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    public Subscribe(User userSub, User user) {
+        this.userSub = userSub;
+        this.user = user;
+    }
 }

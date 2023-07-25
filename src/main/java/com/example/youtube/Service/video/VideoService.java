@@ -7,10 +7,14 @@ import com.example.youtube.repository.ViewRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+=======
+import java.time.LocalDateTime;
+>>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
 import java.util.List;
 import java.util.UUID;
 
@@ -57,6 +61,7 @@ public class VideoService {
     public List<Video> findVideosByTagId(int id) {
         return videoRepository.findVideosByTagId(id);
     }
+<<<<<<< HEAD
 
     public String uploadImage(MultipartFile imageFile) {
         try {
@@ -86,4 +91,16 @@ public class VideoService {
     }
 
 
+=======
+<<<<<<< HEAD
+
+=======
+    public List<Video> findVideoUserLiked(int id){
+        return videoRepository.findLikedVideosByUserId(id);
+    }
+    public List<Video> findVideosByUserId(int id){
+        return videoRepository.findVideosByUserId(id);
+    }
+>>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
+>>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
 }
