@@ -16,11 +16,6 @@ import com.example.youtube.repository.VideoRepository;
 import com.example.youtube.Service.TagDetailService;
 import com.example.youtube.Service.TagService;
 
-<<<<<<< HEAD
-import com.example.youtube.Service.tagDetail.request.TagDetailSaveRequest;
-=======
-
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
 import com.example.youtube.utils.AppUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -28,10 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/videos")
@@ -58,33 +50,43 @@ public class VideoResController {
         this.authService = authService;
     }
 
- 
+
     @GetMapping
     public List<Video> showSearch() {
         List<Video> videos = new ArrayList<>();
-        try {
-            User user = authService.findByName(authService.getCurrentUser());
+        List<Integer> arr = new ArrayList<>();
+        User user = authService.findByName(authService.getCurrentUser());
+        if(user !=null){
             List<Object[]> a = videoRepository.findTopTwoTagsByUserId(user.getId());
-            List<Integer> b = videoRepository.findVideoIdsByTagTitle((String) a.get(0)[0], (String) a.get(1)[0]);
-            for (var item : b) {
-                videos.add(videoRepository.findById(item.intValue()));
+            for (var tag : a) {
+                List<Integer> b = videoRepository.findVideoIdsByTagTitle((String) tag[0]);
+                arr.addAll(b);
             }
-            return videos;
-        } catch (Exception e) {
-            return videoRepository.findAll();
+            if(arr.size()>0) {
+                HashSet<Integer> set = new HashSet<>(arr);
+                List<Integer> listWithoutDuplicates = new ArrayList<>(set);
+                for (var item : listWithoutDuplicates) {
+                    videos.add(videoRepository.findById(item.intValue()));
+                }
+                return videos;
+            }else {
+                return videoRepository.findAll();
+            }
         }
+        return videoRepository.findAll();
     }
+
     @GetMapping("/create")
-    public ResponseEntity<?> showCreate(){
+    public ResponseEntity<?> showCreate() {
         List<Tag> tagList = tagService.findAll();
         return ResponseEntity.ok(tagList);
     }
 
     @PostMapping("/create")
     public ResponseEntity<?> create(Authentication authentication,
-                                    @RequestBody VideoSaveRequest videoSaveRequest){
+                                    @RequestBody VideoSaveRequest videoSaveRequest) {
         String name = authentication.getName();
-        User user = userRepository.findByUsernameIgnoreCaseOrEmailIgnoreCaseOrPhone(name,name,name).get();
+        User user = userRepository.findByUsernameIgnoreCaseOrEmailIgnoreCaseOrPhone(name, name, name).get();
         Video video = AppUtils.mapper.map(videoSaveRequest, Video.class);
         video.setUser(user);
         videoSaveRequest.getTagDetails();
@@ -99,100 +101,72 @@ public class VideoResController {
         video.setTagDetails(tags);
         video.setTypeVideo(TypeVideo.VIDEO);
         video.setDateSubmit(LocalDateTime.now());
-//        TagDetail tagDetailCreate = tagDetailService.create(tagDetail);
-//        tagDetailCreate.getId();
-      videoService.create(video);
+
+        videoService.create(video);
 
         return ResponseEntity.ok("Create ok");
     }
 
     @GetMapping("/edit")
-    public ResponseEntity<?> showEdit(@RequestParam int id){
+    public ResponseEntity<?> showEdit(@RequestParam int id) {
         Video video = videoService.findById(id);
         List<Tag> tagList = tagService.findAll();
         Map<Object, String> map = new HashMap<>();
-        map.put(video,"video");
-        map.put(tagList,"tag");
+        map.put(video, "video");
+        map.put(tagList, "tag");
         return ResponseEntity.ok(map);
     }
+
     @PostMapping("/edit")
-    public ResponseEntity<?> edit(@RequestBody Video video){
+    public ResponseEntity<?> edit(@RequestBody Video video) {
         videoService.update(video);
         return ResponseEntity.ok("edit");
     }
+
     @GetMapping("/delete")
-    public ResponseEntity<?> delete(@RequestParam int id){
+    public ResponseEntity<?> delete(@RequestParam int id) {
         videoService.delete(id);
         return ResponseEntity.ok("delete");
     }
 
     @GetMapping("/findtitle")
-    public ResponseEntity<?> findByTitleOrUsername(@RequestParam String search){
+    public ResponseEntity<?> findByTitleOrUsername(@RequestParam String search) {
         List<Video> videoList = videoService.findByTitleContainingOrUsername(search, search);
         return ResponseEntity.ok(videoList);
     }
+
     @GetMapping("/tag/{id}")
-<<<<<<< HEAD
-
-//    public ResponseEntity<?> getTagById(@PathVariable int id){
-
-    public ResponseEntity<?> showTags(@PathVariable int id){
-
-=======
-<<<<<<< HEAD
-
-//    public ResponseEntity<?> getTagById(@PathVariable int id){
-
-    public ResponseEntity<?> showTags(@PathVariable int id){
-
-=======
-<<<<<<< HEAD
-    public ResponseEntity<?> showTags(@PathVariable int id){
-=======
-<<<<<<< HEAD
-    public ResponseEntity<?> getTagById(@PathVariable int id){
-=======
-    public ResponseEntity<?> showTags(@PathVariable int id){
->>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
->>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
->>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
+    public ResponseEntity<?> showTags(@PathVariable int id) {
 //        Tag tag = tagService.findById(id);
         List<Video> videos = videoService.findVideosByTagId(id);
 
         return ResponseEntity.ok(videos);
     }
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
     @GetMapping("/tags")
     public ResponseEntity<?> getTags() {
         List<Tag> tagList = tagService.findAll();
-
-<<<<<<< HEAD
-        return ResponseEntity.ok(tagList);}
-=======
         return ResponseEntity.ok(tagList);
     }
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
 
     @GetMapping("getVideoLiked")
-    public ResponseEntity<?> getVideoLiked(){
-        User user=  authService.findByName(authService.getCurrentUser());
-        if(user!=null){
-            List<Video> videos= videoService.findVideoUserLiked(user.getId());
+    public ResponseEntity<?> getVideoLiked() {
+        User user = authService.findByName(authService.getCurrentUser());
+        if (user != null) {
+            List<Video> videos = videoService.findVideoUserLiked(user.getId());
             return ResponseEntity.ok(videos);
         }
         return null;
 
     }
->>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
+    @GetMapping("getVideoOfUserLog")
+    public ResponseEntity<?> getVideoOfUserLog(){
+        User user = authService.findByName(authService.getCurrentUser());
+        if (user != null) {
+
+            return ResponseEntity.ok(videoService.findVideosByUserId(user.getId()));
+        }
+        return null;
+
+    }
 }

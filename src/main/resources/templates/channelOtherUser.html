@@ -40,13 +40,9 @@
           <h5> 1 người đăng kí</h5>
           <h5>3 video</h5>
           </div>
-<<<<<<< HEAD
-=======
-          <button type="button" onclick="subscribe()" id="btn-sub"> Subscribe</button>
 
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
       </div>
-      <button class="button-subscribe" type="button" onclick="subscribe()" > Subscribe</button>
+      <button class="button-subscribe" type="button" onclick="subscribe()" id="btn-sub"></button>
 
   </div>
 
@@ -126,51 +122,7 @@
           </a>
         </div>
 
-        <div class="nav_items subscribe-container">
-          <h3 class="nav_subititle">SUBSCRIPTIONS</h3>
 
-          <a href="#" class="nav_link">
-            <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png" alt="">
-            <span class="nav_name">GorkCoder</span>
-          </a>
-          <a href="#" class="nav_link">
-            <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png" />
-            <span class="nav_name">React Maste</span>
-          </a>
-          <a href="#" class="nav_link">
-            <img class="subscribe" src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
-            <span class="nav_name">Backend Development</span>
-          </a>
-          <a href="#" class="nav_link">
-            <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
-            <span class="nav_name">Frontend Development</span>
-          </a>
-
-
-          <div class="nav_dropdown">
-            <a href="#" class="nav_link">
-              <i class="fa-solid fa-chevron-down nav_icon"></i>
-              <span class="nav_name">Show 3 More</span>
-            </a>
-
-            <div class="nav_dropdown-collapse nav_dropdown-second">
-              <div class="nav_dropdown-content">
-                <a href="#" class="nav_dropdown-items">
-                  <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
-                  <span class="nav_name">Frontend Design</span>
-                </a>
-                <a href="#" class="nav_dropdown-items">
-                  <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
-                  <span class="nav_name">Backend Design</span>
-                </a>
-                <a href="#" class="nav_dropdown-items">
-                  <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
-                  <span class="nav_name">Backend Design</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </nav>
@@ -265,9 +217,9 @@
       }).done(data => {
                 console.log(data)
                 if(data==true){
-                  document.getElementById("btn-sub").innerText="đã sub"
+                  document.getElementById("btn-sub").innerText="SUBSCRIBE"
                 }else {
-                  document.getElementById("btn-sub").innerText="chưa sub"
+                  document.getElementById("btn-sub").innerText="DISSUBCRIBE"
                 }
               }
       )

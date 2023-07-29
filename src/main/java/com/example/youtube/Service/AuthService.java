@@ -1,10 +1,11 @@
 
 package com.example.youtube.Service;
 
+import com.example.youtube.Service.user.request.RegisterSaveRequest;
 import com.example.youtube.enums.Role;
 import com.example.youtube.model.User;
 import com.example.youtube.repository.UserRepository;
-import com.example.youtube.service.request.RegisterSaveRequest;
+
 import com.example.youtube.utils.AppUtils;
 
 import jakarta.validation.Valid;
@@ -35,14 +36,14 @@ public class AuthService implements UserDetailsService {
         User user= AppUtils.mapper.map(request,User.class);
         userRepository.save(user);
     }
-    public void register(com.example.youtube.service.request.@Valid RegisterSaveRequest request){
+    public void register(@Valid RegisterSaveRequest request){
         var user = AppUtils.mapper.map(request, User.class);
         user.setRole(Role.ROLE_USER);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 
-    public boolean checkUsernameOrPhoneNumberOrEmail(com.example.youtube.service.request.@Valid RegisterSaveRequest request, BindingResult result){
+    public boolean checkUsernameOrPhoneNumberOrEmail(@Valid RegisterSaveRequest request, BindingResult result){
         boolean check = false;
         if(userRepository.existsByUsernameIgnoreCase(request.getUsername())){
             result.reject("username", null,

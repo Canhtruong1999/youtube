@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 package com.example.youtube.controller.api;
-
 import com.example.youtube.Service.video.VideoService;
 import com.example.youtube.model.Video;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +22,3 @@ public class ViewRestController {
         return new ResponseEntity<>(viewCount, HttpStatus.OK);
     }
 }
-=======
-package com.example.youtube.controller.api;
-
-public class ViewRestController {
-}
->>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630

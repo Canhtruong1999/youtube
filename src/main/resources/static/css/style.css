@@ -476,3 +476,10 @@ header .toggle {
   right: 10px;
   top: 8px;
 }
+#videoLiked{
+  color: white;
+}
+.user-action{
+  width: 115px;
+  height: 103px;
+}

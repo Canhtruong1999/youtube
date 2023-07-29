@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/singlePages")
-public class SinglePageController{
+public class    SinglePageController{
     private final VideoRepository videoRepository;
     private final AuthService authService;
 

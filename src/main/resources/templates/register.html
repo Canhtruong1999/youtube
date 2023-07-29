@@ -52,6 +52,7 @@
                     id="username"
                     name="username"
                     placeholder="Enter full name"
+                    pattern="^[a-zA-Z0-9]{5,15}$" required title="Tên không được bắt đầu bằng khoảng trống và có kí tự đặc biệt"
                     th:field="*{username}"
                     type="text"
             />
@@ -65,6 +66,8 @@
                     id="password"
                     name="password"
                     placeholder="Enter password"
+                    pattern="^[a-zA-Z0-9]{5,15}$" required title="password không được bắt đầu bằng khoảng trống và có kí tự đặc biệt"
+
                     th:field="*{password}"
                     type="password"
             />
@@ -78,6 +81,8 @@
                     id="phone"
                     name="phone"
                     placeholder="Enter phone"
+                    pattern="^[0][0-9]{9}$" required title="số điện thoại phải gồm 10 chữ số và bắt đầu bằng số 0"
+
                     th:field="*{phone}"
                     type="text"
             />

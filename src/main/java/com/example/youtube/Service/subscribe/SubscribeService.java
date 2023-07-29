@@ -5,6 +5,8 @@ import com.example.youtube.model.User;
 import com.example.youtube.repository.SubscribeRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SubscribeService {
     private final SubscribeRepository subscribeRepository;
@@ -20,5 +22,8 @@ public class SubscribeService {
     }
     public void delete(Subscribe subscribe){
         subscribeRepository.delete(subscribe);
+    }
+    public List<Subscribe> findSubscriptionsByUser(User user){
+        return subscribeRepository.findSubscriptionsByUserId(user.getId());
     }
 }
