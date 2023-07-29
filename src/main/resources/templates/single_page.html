@@ -176,11 +176,8 @@
     <section class="video_items flex">
         <div class="left">
             <div class="left_content">
-<<<<<<< HEAD
                 <video controls onplay="getView('${video.id}')">
-=======
-                <video controls>
->>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
+
                     <source th:src="${video.video}" type="video/mp4" poster="${video.img}">
                 </video>
 
@@ -408,16 +405,7 @@
 
         })
     }
-<<<<<<< HEAD
 
-
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
     function timeAgo(date) {
         const currentDate = new Date();
         const targetDate = new Date(
@@ -444,15 +432,7 @@
             // Nếu muốn xử lý thời gian lâu hơn, bạn có thể thêm các đơn vị khác như tuần, tháng, năm, vv. ở đây
             return targetDate.toDateString(); // Hoặc trả về ngày tháng năm đầy đủ
         }
-<<<<<<< HEAD
-    }
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
 
-    console.log(video.dateSubmit)
-    document.getElementById("dateSubmit").innerText=timeAgo("2023-07-20T12:34:56")
-
-<<<<<<< HEAD
-=======
     var startDate;
     var pauseDate = 0;
     var timeOut;
@@ -484,10 +464,8 @@
     }
 
 
-=======
+
     }
->>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
 
 
     function addComment (){
@@ -568,7 +546,6 @@
             method: 'POST',
             data: JSON.stringify(data)
         }).done(resp => {
-            alert("success")
             showReply(id)
         })
     }
@@ -599,16 +576,7 @@
     function hideReply(id){
         document.getElementById("showReply"+id).innerHTML="";
     }
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
->>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
->>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
 </script>
 </body>
 

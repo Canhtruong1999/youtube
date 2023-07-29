@@ -40,13 +40,9 @@
           <h5> 1 người đăng kí</h5>
           <h5>3 video</h5>
           </div>
-<<<<<<< HEAD
-=======
-          <button type="button" onclick="subscribe()" id="btn-sub"> Subscribe</button>
 
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
       </div>
-      <button class="button-subscribe" type="button" onclick="subscribe()" > Subscribe</button>
+      <button class="button-subscribe" type="button" onclick="subscribe()" id="btn-sub"> Subscribe</button>
 
   </div>
 
@@ -240,9 +236,12 @@
       }).done(data => {
         console.log(data)
         if(data==true){
-          document.getElementById("btn-sub").innerText="đã sub"
+          document.getElementById("btn-sub").innerText="UnSubscribe"
+          document.getElementById("btn-sub").style.backgroundColor = "#909090";
         }else {
-          document.getElementById("btn-sub").innerText="chưa sub"
+          document.getElementById("btn-sub").innerText="Subscribe"
+          document.getElementById("btn-sub").style.backgroundColor = "red";
+
         }
       })
     }
@@ -265,9 +264,11 @@
       }).done(data => {
                 console.log(data)
                 if(data==true){
-                  document.getElementById("btn-sub").innerText="đã sub"
+                  document.getElementById("btn-sub").innerText="UnSubscribe"
+                  document.getElementById("btn-sub").style.backgroundColor = "#909090";
                 }else {
-                  document.getElementById("btn-sub").innerText="chưa sub"
+                  document.getElementById("btn-sub").innerText="Subscribe"
+                  document.getElementById("btn-sub").style.backgroundColor = "red";
                 }
               }
       )

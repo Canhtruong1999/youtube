@@ -1,6 +1,4 @@
-
 package com.example.youtube.controller.api;
-
 import com.example.youtube.Service.AuthService;
 import com.example.youtube.Service.tagDetail.request.TagDetailSaveRequest;
 import com.example.youtube.Service.video.VideoService;
@@ -15,12 +13,6 @@ import com.example.youtube.repository.UserRepository;
 import com.example.youtube.repository.VideoRepository;
 import com.example.youtube.Service.TagDetailService;
 import com.example.youtube.Service.TagService;
-
-<<<<<<< HEAD
-import com.example.youtube.Service.tagDetail.request.TagDetailSaveRequest;
-=======
-
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
 import com.example.youtube.utils.AppUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -38,12 +30,8 @@ import java.util.Map;
 public class VideoResController {
     private final TagRepository tagRepository;
     private VideoService videoService;
-
     private TagDetailService tagDetailService;
-
     private TagService tagService;
-
-
     private UserRepository userRepository;
     private final VideoRepository videoRepository;
     public final AuthService authService;
@@ -58,7 +46,6 @@ public class VideoResController {
         this.authService = authService;
     }
 
- 
     @GetMapping
     public List<Video> showSearch() {
         List<Video> videos = new ArrayList<>();
@@ -74,6 +61,7 @@ public class VideoResController {
             return videoRepository.findAll();
         }
     }
+
     @GetMapping("/create")
     public ResponseEntity<?> showCreate(){
         List<Tag> tagList = tagService.findAll();
@@ -132,58 +120,17 @@ public class VideoResController {
         return ResponseEntity.ok(videoList);
     }
     @GetMapping("/tag/{id}")
-<<<<<<< HEAD
-
-//    public ResponseEntity<?> getTagById(@PathVariable int id){
-
-    public ResponseEntity<?> showTags(@PathVariable int id){
-
-=======
-<<<<<<< HEAD
-
-//    public ResponseEntity<?> getTagById(@PathVariable int id){
-
-    public ResponseEntity<?> showTags(@PathVariable int id){
-
-=======
-<<<<<<< HEAD
-    public ResponseEntity<?> showTags(@PathVariable int id){
-=======
-<<<<<<< HEAD
-    public ResponseEntity<?> getTagById(@PathVariable int id){
-=======
-    public ResponseEntity<?> showTags(@PathVariable int id){
->>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
->>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
->>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
+public ResponseEntity<?> showTags(@PathVariable int id){
 //        Tag tag = tagService.findById(id);
         List<Video> videos = videoService.findVideosByTagId(id);
 
         return ResponseEntity.ok(videos);
     }
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
     @GetMapping("/tags")
     public ResponseEntity<?> getTags() {
         List<Tag> tagList = tagService.findAll();
-
-<<<<<<< HEAD
-        return ResponseEntity.ok(tagList);}
-=======
         return ResponseEntity.ok(tagList);
     }
->>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
-
     @GetMapping("getVideoLiked")
     public ResponseEntity<?> getVideoLiked(){
         User user=  authService.findByName(authService.getCurrentUser());
@@ -192,7 +139,5 @@ public class VideoResController {
             return ResponseEntity.ok(videos);
         }
         return null;
-
     }
->>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
 }

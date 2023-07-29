@@ -348,7 +348,7 @@ header .toggle {
   }
 
   .nav:hover {
-    width: 265px;
+    width: 177px;
   }
 
   .nav .nav_subititle,
@@ -433,7 +433,9 @@ header .toggle {
   font-size: 35px;
   color: white;
 }
-
+.button-subscribe.clicked{
+  background-color: #12426a;
+}
 
 .button-subscribe {
   height: 36px;
@@ -443,9 +445,7 @@ header .toggle {
   color: #fff;
   text-align: center;
   font-size: 18px;
-
-  width: 122px;
-
+  width: 146px;
   box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }
 
@@ -476,3 +476,74 @@ header .toggle {
   right: 10px;
   top: 8px;
 }
+#videoLiked{
+  color: white;
+  border: 1px;
+ border-radius: 20px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 20px;
+}
+#videoLiked{
+  background: #d12424cc;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  margin-right: -42px;
+  font-size: 15px;
+}
+
+/*body {*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*  background-color: #004882;*/
+/*}*/
+
+.img-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.img-logo select {
+  background-color: #d12424cc;
+  color: white;
+  padding: 12px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.img-logo::before {
+  font-family: FontAwesome;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.img-logo:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.img-logo select option {
+  padding: 30px;
+}
+
+
+
+

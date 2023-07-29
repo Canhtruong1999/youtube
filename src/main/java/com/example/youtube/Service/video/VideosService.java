@@ -15,6 +15,8 @@ public interface VideosService {
         List<Video> getAllVideos();
 
         Video createVideo(VideoSaveRequuest videoSaveRequuest, MultipartFile imageFile, MultipartFile videoFile) throws IOException;
-    }
+
+
+}
 
 
