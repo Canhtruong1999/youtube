@@ -17,9 +17,15 @@ public interface VideoRepository extends JpaRepository<Video,Integer> {
     @Query("SELECT v.id FROM Video v " +
             "LEFT JOIN TagDetail td ON v.id = td.video.id " +
             "LEFT JOIN Tag t ON td.tag.id = t.id " +
+<<<<<<< HEAD
             "WHERE t.title LIKE %:keyword1%  " +
             "GROUP BY v.id")
     List<Integer> findVideoIdsByTagTitle( String keyword1);
+=======
+            "WHERE t.title LIKE %:keyword1% OR t.title LIKE %:keyword2% " +
+            "GROUP BY v.id")
+    List<Integer> findVideoIdsByTagTitle( String keyword1, String keyword2);
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00
 
     @Query("SELECT v FROM Video v " +
             "LEFT JOIN TagDetail td ON v.id = td.video.id " +
@@ -32,6 +38,7 @@ public interface VideoRepository extends JpaRepository<Video,Integer> {
     List<Video> findByTitleContainingOrUser_Username(String title, String username);
 
     @Query("SELECT t.title, COUNT(*) FROM User u " +
+<<<<<<< HEAD
             "inner JOIN View v ON u.id = v.user.id " +
             "inner JOIN Video vi ON v.video.id = vi.id " +
             "inner JOIN TagDetail td ON vi.id = td.video.id " +
@@ -40,6 +47,16 @@ public interface VideoRepository extends JpaRepository<Video,Integer> {
             "GROUP BY t.title " +
             "ORDER BY COUNT(*) DESC "
          )
+=======
+            "LEFT JOIN View v ON u.id = v.user.id " +
+            "LEFT JOIN Video vi ON v.video.id = vi.id " +
+            "LEFT JOIN TagDetail td ON vi.id = td.video.id " +
+            "LEFT JOIN Tag t ON td.tag.id = t.id " +
+            "WHERE u.id = :userId " +
+            "GROUP BY t.title " +
+            "ORDER BY COUNT(*) DESC " +
+            "LIMIT 2")
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00
     List<Object[]> findTopTwoTagsByUserId(int userId);
     Video findById(int id);
     @Query("SELECT v FROM Likes l JOIN Video v ON l.video.id = v.id WHERE l.likeStatus = 'LIKE' AND l.user.id = :userId")

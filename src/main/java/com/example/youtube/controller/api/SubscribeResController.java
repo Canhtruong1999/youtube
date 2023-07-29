@@ -7,14 +7,16 @@ import com.example.youtube.model.Subscribe;
 import com.example.youtube.model.User;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+<<<<<<< HEAD
 
 import java.util.ArrayList;
 import java.util.List;
+=======
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00
 
 @RestController
 @RequestMapping("/api/subscribes")
 public class SubscribeResController {
-
     private final AuthService authService;
     private final SubscribeService subscribeService;
     private final UserService userService;

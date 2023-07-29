@@ -18,8 +18,13 @@ public class HomeController {
     }
 
     @GetMapping("/home")
+<<<<<<< HEAD
     public String gohome(Model model){
         model.addAttribute("userLogin",  authService.findByName(authService.getCurrentUser()));
+=======
+    public String gohome(){
+
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00
         return "index";
     }
     @GetMapping("login")

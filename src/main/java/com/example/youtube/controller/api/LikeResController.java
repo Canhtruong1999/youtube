@@ -76,5 +76,4 @@ public class LikeResController {
             return ResponseEntity.ok(data);
         }
     }
-
 }

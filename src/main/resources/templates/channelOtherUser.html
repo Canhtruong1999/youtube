@@ -42,7 +42,11 @@
           </div>
 
       </div>
+<<<<<<< HEAD
       <button class="button-subscribe" type="button" onclick="subscribe()" id="btn-sub"></button>
+=======
+      <button class="button-subscribe" type="button" onclick="subscribe()" id="btn-sub"> Subscribe</button>
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00
 
   </div>
 
@@ -192,9 +196,12 @@
       }).done(data => {
         console.log(data)
         if(data==true){
-          document.getElementById("btn-sub").innerText="đã sub"
+          document.getElementById("btn-sub").innerText="UnSubscribe"
+          document.getElementById("btn-sub").style.backgroundColor = "#909090";
         }else {
-          document.getElementById("btn-sub").innerText="chưa sub"
+          document.getElementById("btn-sub").innerText="Subscribe"
+          document.getElementById("btn-sub").style.backgroundColor = "red";
+
         }
       })
     }
@@ -217,9 +224,17 @@
       }).done(data => {
                 console.log(data)
                 if(data==true){
+<<<<<<< HEAD
                   document.getElementById("btn-sub").innerText="SUBSCRIBE"
                 }else {
                   document.getElementById("btn-sub").innerText="DISSUBCRIBE"
+=======
+                  document.getElementById("btn-sub").innerText="UnSubscribe"
+                  document.getElementById("btn-sub").style.backgroundColor = "#909090";
+                }else {
+                  document.getElementById("btn-sub").innerText="Subscribe"
+                  document.getElementById("btn-sub").style.backgroundColor = "red";
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00
                 }
               }
       )

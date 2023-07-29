@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 
@@ -518,3 +519,470 @@
 </script>
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="images/png" rel="icon" href="/assets/images/icons8-youtube.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Youtube </title>
+    <style>
+
+        .tags{
+            background: #535353;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            margin-right: 10px;
+            font-size: 15px;
+
+        }
+        
+        .tags:hover {
+            background-color: #ff0000;
+            color: white;
+        }
+        .search{
+            background: #535353;
+            color: white;
+            border: none;
+            border-radius: 20px;
+        }
+        .imgAvatar{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body style="background-color: #1c1c1c">
+<!--    header      -->
+<header class="header">
+    <div class="header_container">
+        <div class="none"> </div>
+        <div class="search">
+            <input  id="findTitleAndUsername" type="search" placeholder="Search" oninput="FindName(this.value)">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="user">
+            <div class="icon">
+                <i class="fa-solid fa-video" data-toggle="modal" data-target="#modal-create"  onclick="showCreate()"></i>
+                <i class="fa-solid fa-bell"></i>
+
+<!--                <img class="profileAvatar" src="/assets/images/logo.png" alt="">-->
+            </div>
+
+            <div id="user-info">
+                <button>
+                    <a href="/login">Log In</a>
+                </button>
+
+            </div>
+        <div class="toggle">
+            <i class="fa-solid fa-bars" id="header-toggle"></i>
+        </div>
+    </div>
+
+    </div>
+    <div id="scroll-container" class="style-scope ytd-feed-filter-chip-bar-renderer" style="touch-action: pan-y; color: white; margin: 10px; "; >
+        <!--        <button name="button" value="OK" type="button" onclick="">Âm Nhạc</button>-->
+    </div>
+    <div id="videoLiked" style="display: none" > VIDEO LIKED</div>
+    </div>
+</header>
+
+<!--    header      -->
+<!--    nav      -->
+<section class="nav" id="navbar" style="padding-left: 25px;">
+    <nav class="nav_container">
+        <div>
+            <a href="/home" class="nav_link nav_logo ">
+                <i class="fa-solid fa-bars nav_icon"></i>
+                <span class="logo_name">
+               <i class="fab fa-youtube"></i>
+               Youtube
+             </span>
+            </a>
+
+            <div class="nav_list">
+                <div class="nav_items navtop">
+                    <a href="/home" class="nav_link navtop active">
+                        <i class="fa fa-house nav_icon"></i>
+                        <span class="nav_name">Home</span>
+                    </a>
+                    <a href="#" class="nav_link navtop">
+                        <i class="fa fa-compass nav_icon"></i>
+                        <span class="nav_name">Explore</span>
+                    </a>
+                    <a href="#" class="nav_link navtop">
+                        <i class="fa-brands fa-tiktok nav_icon"></i>
+                        <span class="nav_name">Short Video</span>
+                    </a>
+                    <a href="/studios" class="nav_link navtop" target="_blank">
+                        <i class="fa-solid fa-users nav_icon"></i>
+                        <span class="nav_name">Channel</span>
+                    </a>
+                    <a href="#" class="nav_link navtop">
+                        <i class="fa-solid fa-video nav_icon"></i>
+                        <span class="nav_name">Library</span>
+                    </a>
+                    <a href="#" class="nav_link navtop">
+                        <i class="fa-solid fa-clock-rotate-left nav_icon"></i>
+                        <span class="nav_name">History</span>
+                    </a>
+                    <a href="#" class="nav_link navtop">
+                        <i class="fa-solid fa-thumbs-up nav_icon"></i>
+                        <span onclick="renderVideoLiked()" class="nav_name">Like</span>
+                    </a>
+
+                    <div class="nav_dropdown">
+                        <a href="#" class="nav_link">
+                            <i class="fa-solid fa-chevron-down nav_icon"></i>
+                            <span class="nav_name">Show More</span>
+                        </a>
+
+                        <div class="nav_dropdown-collapse">
+                            <div class="nav_dropdown-content">
+                                <a href="#" class="nav_dropdown-item">Grid Box</a>
+                                <a href="#" class="nav_dropdown-item">Frontend Design</a>
+                                <a href="#" class="nav_dropdown-item">Backend Design</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="nav_link">
+                        <i class="fa-solid fa-comment nav_icon"></i>
+                        <span class="nav_name">Messages</span>
+                    </a>
+                </div>
+
+                <div class="nav_items subscribe-container">
+                    <h3 class="nav_subititle">SUBSCRIPTIONS</h3>
+
+                    <a href="#" class="nav_link">
+                        <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-people-victoruler-flat-victoruler-5.png" alt="">
+                        <span class="nav_name">GorkCoder</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-occupation-and-people-victoruler-flat-victoruler.png" />
+                        <span class="nav_name">React Maste</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <img class="subscribe" src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+                        <span class="nav_name">Backend Development</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
+                        <span class="nav_name">Frontend Development</span>
+                    </a>
+
+
+                    <div class="nav_dropdown">
+                        <a href="#" class="nav_link">
+                            <i class="fa-solid fa-chevron-down nav_icon"></i>
+                            <span class="nav_name">Show 3 More</span>
+                        </a>
+
+                        <div class="nav_dropdown-collapse nav_dropdown-second">
+                            <div class="nav_dropdown-content">
+                                <a href="#" class="nav_dropdown-items">
+                                    <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
+                                    <span class="nav_name">Frontend Design</span>
+                                </a>
+                                <a href="#" class="nav_dropdown-items">
+                                    <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
+                                    <span class="nav_name">Backend Design</span>
+                                </a>
+                                <a href="#" class="nav_dropdown-items">
+                                    <img class="subscribe" src="https://img.icons8.com/external-victoruler-flat-victoruler/64/000000/external-boy-children-avatar-victoruler-flat-victoruler-12.png" />
+                                    <span class="nav_name">Backend Design</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+<!--    nav      -->
+<!-- Modal create-->
+<div class="modal fade" id="modal-create" data-backdrop="static">
+    <div class="modal-dialog modal-xs">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Video</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" id="create-video" >
+                    <div class=" card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="title">Title</label><span class="text-danger">*</span>
+                                    <input type="text" name="title" id="title" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="typeVideo">TypeVideo</label><span class="text-danger">*</span>
+                                    <input type="text" name="typeVideo" id="typeVideo" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="video">Video</label><span class="text-danger">*</span>
+                                    <input type="text" name="video" id="video" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="img">Img</label><span class="text-danger">*</span>
+                                    <input type="text" name="img" id="img" class="form-control">
+                                </div>
+                                <div class = "form-group" id="tag">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button class=" form-submit btn btn-primary">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<script src="/js/main.js" charset="utf-8"></script>
+<main>
+    <section class="video_content grid" id="body" style="padding-top: 120px">
+        <div class="video_items">
+            <a href="single-page.html">
+                <img src="/assets/images/video_images/back4.jpg" alt="">
+            </a>
+            <div class="details flex">
+                <div class="imgAvatar">
+                    <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+                </div>
+                <div class="heading">
+                    <p>How to make Hotel Booking Website With HTML CSS ......</p>
+                    <span>GorkCoder <i class="fa fa-circle-check"></i> </span>
+                    <span>56.7M .1 Week ago</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="/js/main.js" charset="utf-8" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    let videos=[];
+    let body=document.getElementById("body");
+    function renderTags(){
+        $.ajax({
+            url: `http://localhost:8080/api/videos/tags`,
+            method: 'GET'
+        }).done(data => {
+            let str = "";
+
+            data.forEach((tag) => {
+                str += `
+                 <button name="button" class="tags" value="OK" type="button" onclick="showVideoByTag(${tag.id})">${tag.title} </button>
+
+  `
+            })
+            document.getElementById('scroll-container').innerHTML = str;
+        })
+    }
+    renderTags()
+    function render(){
+        body.innerHTML="";
+        $.ajax({
+            url: `http://localhost:8080/api/videos`,
+            method: 'GET'
+        }).done(data => {
+            videos = data;
+            let str = "";
+            videos.forEach((video, index) => {
+                str += `
+                <div class="video_items">
+            <a href="/singlePages/show?id=${video.id}">
+                <img src="${video.img}" alt="">
+            </a>
+            <div class="details flex">
+            <a href="/channelOtherUser?userId=${video.user.id}">
+                <div class="img">
+                   <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png"  style=" width: 66px;
+                    height: 43px;" />
+                </div>
+            </a>
+                <div class="heading">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
+                    <span>${video.dateSubmit} </span>
+                </div>
+            </div>
+        </div>`
+            })
+            body.innerHTML = str;
+        })
+    }
+    function showVideoByTag(value){
+        console.log(value)
+        $.ajax({
+            url: "/api/videos/tag/"+ value,
+            type: 'GET',
+            success: function (datas) {
+                let str = "";
+                datas.forEach((video) => {
+                    str += `
+                <div class="video_items">
+            <a href="/singlePages/show?id=${video.id}">
+                <img src="${video.img}" alt="">
+            </a>
+            <div class="details flex">
+                <div class="img">
+                    <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+                </div>
+                <div class="heading">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
+                    <span>${video.dateSubmit} </span>
+                </div>
+            </div>
+        </div>`
+                })
+                body.innerHTML = str;
+            }
+        });
+    }
+    function FindName(value) {
+        $.ajax({
+            url: "/api/videos/findtitle",
+            type: 'GET',
+            data: {
+                search: value
+            },
+
+             success: function (datas) {
+                 let str = "";
+                 datas.forEach((video) => {
+                     str += `
+                <div class="video_items">
+            <a href="/singlePages/show?id=${video.id}">
+                <img src="${video.img}" alt="">
+            </a>
+            <div class="details flex">
+                <div class="img">
+                    <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+                </div>
+                <div class="heading">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
+                    <span>${video.dateSubmit} </span>
+                </div>
+            </div>
+        </div>`
+                 })
+                 body.innerHTML = str;
+            },
+        });
+    }
+    function showCreate(){
+        $.ajax({
+            url: "/api/videos/create",
+            type: 'GET',
+            success: function (data) {
+                console.log(data)
+                let checkbox = ``;
+                data.forEach(tag => {
+                    checkbox += `
+                <input class="pl-2" type="checkbox" id="tag-${tag.id}" name="tags" value=${tag.id}>
+                <label for="tag-${tag.id}" style="margin-right: 10px"> ${tag.title}</label>
+                `;
+                })
+                $('#tag').html(checkbox);
+            },
+            errors: function (errors) {
+            }
+        });
+    }
+    function showEdit(id){
+        $.ajax({
+            url: "/api/videos/edit",
+            type: 'GET',
+            data: {
+                id: id
+            },
+            success: function (data) {
+                console.log()
+                $('#edit-id').val(data.id)
+                $('#edit-title').val(data.title)
+                $('#edit-description').val(data.description)
+                let option = ``;
+            }
+        });
+    }
+    function Delete(id){
+        $.ajax({
+            url: "/api/videos/delete",
+            type:'Get',
+            data:{
+                id : id
+            },
+            success: function (message){
+                // renderDatas()
+                render();
+            }
+        })
+    }
+    function renderVideoLiked(){
+        document.getElementById("videoLiked").style.display="block"
+        body.innerHTML="";
+        $.ajax({
+            url: `http://localhost:8080/api/videos/getVideoLiked`,
+            method: 'GET'
+        }).done(data => {
+            videos = data;
+            let str = "";
+            videos.forEach((video, index) => {
+                str += `
+                <div class="video_items">
+            <a href="/singlePages/show?id=${video.id}">
+                <img src="${video.img}" alt="">
+            </a>
+            <div class="details flex">
+                <div class="img">
+                    <img src="https://img.icons8.com/external-victoruler-linear-colour-victoruler/64/000000/external-boy-children-avatar-victoruler-linear-colour-victoruler-2.png" />
+                </div>
+                <div class="heading">
+                    <p>${video.title}</p>
+                    <span>${video.user.username} <i class="fa fa-circle-check"></i> </span>
+                    <span>${video.dateSubmit} </span>
+                </div>
+            </div>
+        </div>`
+            })
+            body.innerHTML = str;
+        })
+    }
+
+    render();
+</script>
+</body>
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00

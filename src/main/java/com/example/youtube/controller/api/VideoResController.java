@@ -1,6 +1,4 @@
-
 package com.example.youtube.controller.api;
-
 import com.example.youtube.Service.AuthService;
 import com.example.youtube.Service.tagDetail.request.TagDetailSaveRequest;
 import com.example.youtube.Service.video.VideoService;
@@ -15,7 +13,10 @@ import com.example.youtube.repository.UserRepository;
 import com.example.youtube.repository.VideoRepository;
 import com.example.youtube.Service.TagDetailService;
 import com.example.youtube.Service.TagService;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00
 import com.example.youtube.utils.AppUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -30,12 +31,8 @@ import java.util.*;
 public class VideoResController {
     private final TagRepository tagRepository;
     private VideoService videoService;
-
     private TagDetailService tagDetailService;
-
     private TagService tagService;
-
-
     private UserRepository userRepository;
     private final VideoRepository videoRepository;
     public final AuthService authService;
@@ -50,7 +47,10 @@ public class VideoResController {
         this.authService = authService;
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00
     @GetMapping
     public List<Video> showSearch() {
         List<Video> videos = new ArrayList<>();
@@ -136,19 +136,29 @@ public class VideoResController {
     }
 
     @GetMapping("/tag/{id}")
+<<<<<<< HEAD
     public ResponseEntity<?> showTags(@PathVariable int id) {
+=======
+public ResponseEntity<?> showTags(@PathVariable int id){
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00
 //        Tag tag = tagService.findById(id);
         List<Video> videos = videoService.findVideosByTagId(id);
 
         return ResponseEntity.ok(videos);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00
     @GetMapping("/tags")
     public ResponseEntity<?> getTags() {
         List<Tag> tagList = tagService.findAll();
         return ResponseEntity.ok(tagList);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00
     @GetMapping("getVideoLiked")
     public ResponseEntity<?> getVideoLiked() {
         User user = authService.findByName(authService.getCurrentUser());
@@ -157,8 +167,8 @@ public class VideoResController {
             return ResponseEntity.ok(videos);
         }
         return null;
-
     }
+<<<<<<< HEAD
     @GetMapping("getVideoOfUserLog")
     public ResponseEntity<?> getVideoOfUserLog(){
         User user = authService.findByName(authService.getCurrentUser());
@@ -169,4 +179,6 @@ public class VideoResController {
         return null;
 
     }
+=======
+>>>>>>> 7190cba0e363ca23a9167210c16bff37f263ea00
 }
