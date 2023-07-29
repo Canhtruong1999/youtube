@@ -9,18 +9,8 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <title>Youtube </title>
   <style>
-    .avatar{
-      margin-right: 20px;
-      padding-top: 20px;
-      margin-left: 10px;
-    }
-    .title-channel{
-      margin-right: 20px;
-      padding-top: 5px;
-      margin-left: 10px;
-      font-size: 35px;
-      color: white;
-    }
+
+
 
   </style>
 </head>
@@ -50,9 +40,13 @@
           <h5> 1 người đăng kí</h5>
           <h5>3 video</h5>
           </div>
-          <button type="button" onclick="subscribe()" > Subscribe</button>
+<<<<<<< HEAD
+=======
+          <button type="button" onclick="subscribe()" id="btn-sub"> Subscribe</button>
 
+>>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
       </div>
+      <button class="button-subscribe" type="button" onclick="subscribe()" > Subscribe</button>
 
   </div>
 
@@ -184,7 +178,7 @@
 <!--    nav      -->
 
 <main>
-  <section class="video_content grid" id="body"style="padding-top: 130px">
+  <section class="video_content grid" id="body"style="padding-top: 59px">
     <div class="video_items">
       <a href="single-page.html">
         <img src="/assets/images/video_images/back4.jpg" alt="">
@@ -204,6 +198,7 @@
 </main>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script th:inline="javascript">
     let videos=[[${videos}]]
@@ -231,12 +226,33 @@
         })
         body.innerHTML = str;
     }
+    function showSubscribe(){
+      let data=user
+      console.log(user)
+      $.ajax({
+        url: `http://localhost:8080/api/subscribes/getSubscribe`,
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(data)
+      }).done(data => {
+        console.log(data)
+        if(data==true){
+          document.getElementById("btn-sub").innerText="đã sub"
+        }else {
+          document.getElementById("btn-sub").innerText="chưa sub"
+        }
+      })
+    }
+    showSubscribe()
     render()
     function subscribe(){
+      console.log(user)
       let data={
-       user:user
+       id:user.id
       }
-
       $.ajax({
         url: "http://localhost:8080/api/subscribes",
         headers: {
@@ -245,10 +261,16 @@
         },
         method: 'POST',
         data: JSON.stringify(data)
-      }).done(e => {
-        renderComment()
 
-      })
+      }).done(data => {
+                console.log(data)
+                if(data==true){
+                  document.getElementById("btn-sub").innerText="đã sub"
+                }else {
+                  document.getElementById("btn-sub").innerText="chưa sub"
+                }
+              }
+      )
     }
 </script>
 </body>

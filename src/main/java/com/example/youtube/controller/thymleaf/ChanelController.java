@@ -1,4 +1,54 @@
 <<<<<<< HEAD
+
+
+=======
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+
+
+package com.example.youtube.controller.thymleaf;
+
+import com.example.youtube.Service.video.VideoService;
+
+import com.example.youtube.Service.video.VideosService;
+import com.example.youtube.Service.video.request.VideoSaveRequuest;
+import com.example.youtube.model.Video;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
+
+@Controller
+public class ChanelController {
+    private final VideosService videoService;
+
+    public ChanelController(VideosService videoService) {
+        this.videoService = videoService;
+    }
+
+    @GetMapping("/studios")
+    public String goStudio(Model model) {
+        List<Video> videos = videoService.getAllVideos();
+        model.addAttribute("videos", videos);
+        return "studio";
+    }
+
+    @PostMapping("/createVideo")
+    public String createVideo(VideoSaveRequuest videoSaveRequuest) throws IOException {
+        MultipartFile imageFile = videoSaveRequuest.getImageFile();
+        MultipartFile videoFile = videoSaveRequuest.getVideoFile();
+        videoService.createVideo(videoSaveRequuest, imageFile, videoFile);
+        return "redirect:/studios";
+    }
+}
+=======
+
+=======
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
@@ -72,6 +122,8 @@ public class ChanelController {
 <<<<<<< HEAD
 =======
 =======
+>>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
+>>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
 
 package com.example.youtube.controller.thymleaf;
 
@@ -79,6 +131,10 @@ import com.example.youtube.Service.video.VideoService;
 
 import com.example.youtube.Service.video.VideosService;
 import com.example.youtube.Service.video.request.VideoSaveRequuest;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
 import com.example.youtube.model.Video;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -112,6 +168,16 @@ public class ChanelController {
         return "redirect:/studios";
     }
 }
+<<<<<<< HEAD
+
+
+
+=======
+<<<<<<< HEAD
+>>>>>>> Stashed changes
+=======
 
 >>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
 >>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
+>>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
+>>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1

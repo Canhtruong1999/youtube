@@ -32,6 +32,7 @@ span, i {
 
 /*-------------------header------------*/
 .header {
+  height: 10%;
   position: fixed;
   top: 0;
   left: 0;
@@ -327,7 +328,7 @@ header .toggle {
 
   header .img {
     width: 148px;
-    height: 128px;
+    height: 37px;
     order: 1;
   }
 
@@ -404,4 +405,74 @@ header .toggle {
 .tags{
   color: red;
   color: red;
+}
+
+
+.button-subscribe {
+  width: 80px;
+  height: 22px;
+  border-radius: 19px;
+  right: 78px;
+  bottom: 117px;
+  border: none;
+}
+
+.avatar img {
+  width: 100px;
+  height: 100px;
+}
+.avatar{
+  margin-right: 20px;
+  padding-top: 20px;
+  margin-left: 10px;
+}
+.title-channel{
+  margin-right: 20px;
+  padding-top: 5px;
+  margin-left: 10px;
+  font-size: 35px;
+  color: white;
+}
+
+
+.button-subscribe {
+  height: 36px;
+  width: 20px;
+  background-color: #ec152f;
+  border: none;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+
+  width: 122px;
+
+  box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+.button-subscribe{
+  left: 1028px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button-subscribe:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 8px;
+  right: -10px;
+  transition: 0.5s;
+}
+
+.button-subscribe:hover{
+  padding-right: 24px;
+  padding-left:8px;
+}
+
+.button-subscribe:hover:after {
+  opacity: 1;
+  right: 10px;
+  top: 8px;
 }

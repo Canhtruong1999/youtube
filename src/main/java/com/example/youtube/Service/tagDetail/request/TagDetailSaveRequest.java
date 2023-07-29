@@ -1,4 +1,4 @@
-package com.example.youtube.service.tagDetail.request;
+package com.example.youtube.Service.tagDetail.request;
 
 import com.example.youtube.model.Tag;
 import com.example.youtube.model.Video;
@@ -12,8 +12,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class TagDetailSaveRequest {
     private String tag;
-
-
-
 
 }

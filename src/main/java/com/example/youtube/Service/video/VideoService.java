@@ -63,6 +63,10 @@ public class VideoService {
     }
 <<<<<<< HEAD
 
+=======
+
+<<<<<<< HEAD
+=======
     public String uploadImage(MultipartFile imageFile) {
         try {
             String filename = UUID.randomUUID().toString() + "_" + imageFile.getOriginalFilename();
@@ -95,12 +99,22 @@ public class VideoService {
 <<<<<<< HEAD
 
 =======
+>>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
+>>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
     public List<Video> findVideoUserLiked(int id){
         return videoRepository.findLikedVideosByUserId(id);
     }
     public List<Video> findVideosByUserId(int id){
         return videoRepository.findVideosByUserId(id);
     }
+<<<<<<< HEAD
+
+=======
+<<<<<<< HEAD
+
+=======
 >>>>>>> a0ec43957822d9d53a48f41f02e2920eba66559e
 >>>>>>> 32ccb657380ae0380a511aecf2a254c6615e7630
+>>>>>>> bcde6724258af4f83afc4f6aa86aa253689cd780
+>>>>>>> 4d72a10a6ea817d7aa0c72e78955ea98495048e1
 }
